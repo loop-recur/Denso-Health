@@ -1,20 +1,35 @@
 Layouts.application = (function() {
   var win;
 
-  var _registerContentView = function(win) {
+  var _registerContentView = function() {
     Layouts.application.contentView = Ti.UI.createView({
       width: '75%',
-      left: '25%',
+      left: '25%'
+    });
+
+    Layouts.application.contentLeftView = Ti.UI.createView({
+      width: '50%',
+      left: 0,
       clear: function() {
-        for(var i in this.children) {
-          this.remove(this.children[i]);
-        }
+        map(function(c) { Layouts.application.contentLeftView.remove(c) }, Layouts.application.contentLeftView.children);
       }
     });
+
+    Layouts.application.contentRightView = Ti.UI.createView({
+      width: '50%',
+      right: 0,
+      clear: function() {
+        map(function(c) { Layouts.application.contentRightView.remove(c) }, Layouts.application.contentRightView.children);
+      }
+    });
+
+    Layouts.application.contentLeftView.add(Views.health.carChassis());
+    Layouts.application.contentView.add(Layouts.application.contentLeftView);
+    Layouts.application.contentView.add(Layouts.application.contentRightView);
     win.add(Layouts.application.contentView);
   };
 
-  var _buildTopBar = function(win) {
+  var _buildTopBar = function() {
     var topBar = Ti.UI.createView({
           width: '100%',
           top: 0,
@@ -22,49 +37,48 @@ Layouts.application = (function() {
           backgroundImage: '/images/top_bar_bg.png',
           height: 40,
           zIndex: 15
-        });
+        }),
 
-    // change to button
-    var carIcon = Ti.UI.createView({
+        carIcon = Ti.UI.createView({
           backgroundColor: 'white',
           height: 20,
           width: 40,
           top: 10,
           right: 160
-        });
+        }),
 
-    var time = Ti.UI.createLabel({
+        time = Ti.UI.createLabel({
           text: DateFormatter.time(),
           font: {fontSize: 25},
           color: 'white',
           top: 5
-        });
+        }),
 
-    var date = Ti.UI.createLabel({
+        date = Ti.UI.createLabel({
           text: DateFormatter.date(),
           font: {fontSize: 16},
           color: 'white',
           top: 12,
           left: 50
-        });
-
-    var powerButton = Ti.UI.createButton({
+        }),
+  
+        powerButton = Ti.UI.createButton({
           backgroundImage: 'images/topbar_on_btn.png',
           width: 20,
           height: 20,
           top: 10,
           right: 210
-        });
+        }),
 
-    var emergencyButton = Ti.UI.createButton({
+        emergencyButton = Ti.UI.createButton({
           backgroundImage: 'images/top_bar_emergency_btn.png',
           backgroundSelectedImage: 'images/top_bar_emergency_btn_a.png',
           width: 35,
           height: 35,
           left: 5
-        });
+        }),
 
-    var caddyLogo = Ti.UI.createImageView({
+        caddyLogo = Ti.UI.createImageView({
           image: '/images/top_bar_cadillac_logo.png',
           right: 0
         });
@@ -78,53 +92,53 @@ Layouts.application = (function() {
     win.add(topBar);
   };
 
-  var _buildMediaBar = function(win) {
+  var _buildMediaBar = function() {
     var mediaPlayer = Ti.UI.createView({
           width: '100%',
           height: 80,
           bottom: 0,
           backgroundImage: '/images/media_bar_bg.png',
           zIndex: 15
-        });
+        }),
 
-    var coverArt = Ti.UI.createImageView({
+        coverArt = Ti.UI.createImageView({
           image: '/images/Media-Bar1-_31.png',
           left: 30
-        });
+        }),
 
-    var nowPlaying = Ti.UI.createLabel({
+        nowPlaying = Ti.UI.createLabel({
           text: 'Now Playing',
           top: 15,
           left: 100,
           color: 'gray',
           font: {fontSize: 14}
-        });
+        }),
 
-    var songTitle = Ti.UI.createLabel({
+        songTitle = Ti.UI.createLabel({
           text: "Moment's Notice",
           top: 30,
           left: 100,
           color: 'white'
-        });
+        }),
 
-    var artist = Ti.UI.createLabel({
+        artist = Ti.UI.createLabel({
           text: 'John Coltrane',
           top: 48,
           left: 100,
           color: 'gray',
           font: {fontSize: 14}
-        });
+        }),
 
-    var mediaBack = Ti.UI.createButton({
+        mediaBack = Ti.UI.createButton({
           backgroundImage: '/images/media_bar_back.png',
           backgroundSelectedImage: '/images/media_bar_back_p.png',
           left: '35%',
           width: 68,
           height: 68,
           top: 10
-        });
+        }),
 
-    var mediaForward = Ti.UI.createButton({
+        mediaForward = Ti.UI.createButton({
           backgroundImage: '/images/media_bar_fwd.png',
           backgroundSelectedImage: '/images/media_bar_fwd_p.png',
           left: '54%',
@@ -132,52 +146,48 @@ Layouts.application = (function() {
           width: 68,
           height: 68,
           top: 10
-        });
+        }),
 
-    var mediaPlay = Ti.UI.createButton({
+        mediaPlay = Ti.UI.createButton({
           backgroundImage: '/images/media_bar_play.png',
           backgroundSelectedImage: '/images/media_bar_play_p.png',
           left: '44%',
           width: 87,
           height: 87,
           top: 5
-        });
+        }),
 
-    var mediaRepeat = Ti.UI.createButton({
+        mediaRepeat = Ti.UI.createButton({
           backgroundImage: '/images/media_bar_repeat.png',
-          //backgroundFocusedImage: '/images/media_bar_repeat_a.png',
           backgroundSelectedImage: '/images/media_bar_repeat_p.png',
           left: '20%',
           width: 44,
           height: 40
-        });
+        }),
 
-    var mediaShuffle = Ti.UI.createButton({
+        mediaShuffle = Ti.UI.createButton({
           backgroundImage: '/images/media_bar_shuffle.png',
-          //backgroundFocusedImage: '/images/media_bar_shuffle_a.png',
           backgroundSelectedImage: '/images/media_bar_shuffle_p.png',
           left: '25%',
           width: 44,
           height: 40,
           enabled: true
-        });
+        }),
 
-    var volumeSlider = Ti.UI.createSlider({
+        volumeSlider = Ti.UI.createSlider({
           right: 25,
           width: 200,
           height: 20
-        });
+        }),
 
-    // make image view
-    var smallVolume = Ti.UI.createView({
+        smallVolume = Ti.UI.createView({
           backgroundColor: 'white',
           height: 10,
           width: 10,
           right: 230
-        });
+        }),
 
-    // make image view
-    var largeVolume = Ti.UI.createView({
+        largeVolume = Ti.UI.createView({
           backgroundColor: 'white',
           height: 10,
           width: 10,
@@ -197,67 +207,69 @@ Layouts.application = (function() {
     mediaPlayer.add(mediaShuffle);
     mediaPlayer.add(volumeSlider);
     win.add(mediaPlayer);
-  }
+  };
 
-  var _buildSideBar = function(win) {
+  var _buildSideBar = function() {
     var sideBar = Ti.UI.createView({
           width: '25%',
           left: 0,
           backgroundImage: '/images/health_sidebar_repeat.png'
-        });
+        }),
 
-    var underTheHood = Ti.UI.createImageView({
+        underTheHood = Ti.UI.createImageView({
           image: '/images/sidebar_under_the_hood_heading.png',
           left: 75,
           top: 125,
           zIndex: 15
-        });
+        }),
 
-    var sideBarBack = Ti.UI.createLabel({
+        sideBarBack = Ti.UI.createLabel({
           text: '< Home',
           top: 100,
           left: 10,
           color: 'white',
           zIndex: 15
-        });
+        }),
 
-    var sideBarInner = Ti.UI.createTableView({
+        sideBarInner = Ti.UI.createTableView({
           top: 175,
           width: '100%',
           separatorColor: 'gray'
-        });
+        }),
 
-    var sidePanelData = [{title: 'Health', icon: '../images/sidebar_health_icon.png', color: 'images/sidebar_yellow.png'},
-                         {title: 'Stats', icon: '../images/sidebar_stats_icon.png', color: 'images/sidebar_rouge.png'}, 
-                         {title: 'Scheduled Maintenance', icon: '../images/sidebar_maitnence_icon.png', color: '../images/sidebar_aqua.png'}, 
-                         {title: 'Guide', icon: 'images/sidebar_guide_icon.png', color: 'images/sidebar_tan.png'} 
-                        ];
+        sidePanelData = [
+                          {title: 'Health', icon: '../images/sidebar_health_icon.png', color: 'images/sidebar_yellow.png'},
+                          {title: 'Stats', icon: '../images/sidebar_stats_icon.png', color: 'images/sidebar_rouge.png'}, 
+                          {title: 'Scheduled Maintenance', icon: '../images/sidebar_maitnence_icon.png', color: '../images/sidebar_aqua.png'}, 
+                          {title: 'Guide', icon: '../images/sidebar_guide_icon.png', color: '../images/sidebar_tan.png'} 
+                        ],
 
-    var rows = [];
+        rows = [];
+
     for (var i=0, len=sidePanelData.length; i < len; i++) {
-      var data = sidePanelData[i];
-      var row = Ti.UI.createTableViewRow({
-        color: 'white',
-        width: '100%',
-        height: 80
-      });
+      var data = sidePanelData[i],
+          row = Ti.UI.createTableViewRow({
+            color: 'white',
+            width: '100%',
+            height: 80
+          }),
 
-      var icon = Ti.UI.createView({
+          icon = Ti.UI.createView({
             backgroundImage: data.icon,
             left: 35,
             height: 40,
             width: 40,
             zIndex: 16
-          });
+          }),
 
-      var color = Ti.UI.createView({
+          color = Ti.UI.createView({
             backgroundImage: data.color,
             left: 0,
             width: 19,
             zIndex: 16
-          });
+          }),
 
-      var label = Ti.UI.createLabel({
+          label = Ti.UI.createLabel({
             text: data.title,
             color: 'white',
             left: 95
@@ -274,13 +286,45 @@ Layouts.application = (function() {
     win.add(sideBarBack);
     win.add(underTheHood);
     win.add(sideBar);
-  }
+  };
 
-  var build = function(win) {
-    _registerContentView(win);
-    _buildTopBar(win);
-    _buildMediaBar(win);
-    _buildSideBar(win);
+  var _buildCarSummary = function() {
+    var healthAutoBox = Ti.UI.createView({
+          backgroundImage: '/images/health_auto_box.png',
+          top: 50,
+          left: 350,
+          width: 194,
+          height: 59
+        });
+
+    var carPreview = Ti.UI.createView({
+          backgroundColor: 'white',
+          width: 45,
+          height: 45,
+          top: 7,
+          left: 5
+        });
+
+    var carMakeModel = Ti.UI.createLabel({
+          text: '2011 Cadillac XTS',
+          color: 'white',
+          bottom: 5,
+          right: 5,
+          font: {fontSize: 14}
+        });
+
+    healthAutoBox.add(carPreview);
+    healthAutoBox.add(carMakeModel);
+    win.add(healthAutoBox);
+  };
+
+  var build = function(w) {
+    win = w; 
+    _registerContentView();
+    _buildTopBar();
+    _buildMediaBar();
+    _buildSideBar();
+    _buildCarSummary();
   };
 
   return {build: build}
