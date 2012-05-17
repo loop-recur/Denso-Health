@@ -1,95 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-	<id>com.looprecur.densohealthapp</id>
-	<name>densohealthapp</name>
-	<version>1.0</version>
-	<publisher>not specified</publisher>
-	<url>not specified</url>
-	<description>not specified</description>
-	<copyright>not specified</copyright>
-	<icon>appicon.png</icon>
-	<persistent-wifi>false</persistent-wifi>
-	<prerendered-icon>false</prerendered-icon>
-	<statusbar-style>default</statusbar-style>
-	<statusbar-hidden>false</statusbar-hidden>
-	<fullscreen>false</fullscreen>
-	<navbar-hidden>false</navbar-hidden>
-	<analytics>true</analytics>
-	<guid>e1ef4a44-46d6-40f3-85b4-5d1dd75e8296</guid>
-	<property name="ti.ui.defaultunit">system</property>
-	<iphone>
-		<orientations device="iphone">
-			<orientation>Ti.UI.PORTRAIT</orientation>
-		</orientations>
-		<orientations device="ipad">
-			<orientation>Ti.UI.PORTRAIT</orientation>
-			<orientation>Ti.UI.UPSIDE_PORTRAIT</orientation>
-			<orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
-			<orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
-		</orientations>
-	</iphone>
-	<android xmlns:android="http://schemas.android.com/apk/res/android">
-	</android>
-	<mobileweb>
-		<precache>
-      <image>/images/health_meter/health_meter0.png</image>
-      <image>/images/health_meter/health_meter1.png</image>
-      <image>/images/health_meter/health_meter2.png</image>
-      <image>/images/health_meter/health_meter3.png</image>
-      <image>/images/health_meter/health_meter4.png</image>
-      <image>/images/health_meter/health_meter5.png</image>
-      <image>/images/health_meter/health_meter6.png</image>
-      <image>/images/health_meter/health_meter7.png</image>
-      <image>/images/health_meter/health_meter8.png</image>
-      <image>/images/health_meter/health_meter9.png</image>
-      <image>/images/health_meter/health_meter10.png</image>
-      <image>/images/health_meter/health_meter11.png</image>
-      <image>/images/health_meter/health_meter12.png</image>
-      <image>/images/health_meter/health_meter13.png</image>
-      <image>/images/health_meter/health_meter14.png</image>
-      <image>/images/health_meter/health_meter15.png</image>
-      <image>/images/health_meter/health_meter16.png</image>
-      <image>/images/health_meter/health_meter17.png</image>
-      <image>/images/health_meter/health_meter18.png</image>
-      <image>/images/health_meter/health_meter19.png</image>
-      <image>/images/health_meter/health_meter20.png</image>
-      <image>/images/health_meter/health_meter21.png</image>
-      <image>/images/health_meter/health_meter22.png</image>
-      <image>/images/health_meter/health_meter23.png</image>
-      <image>/images/health_meter/health_meter24.png</image>
-      <image>/images/health_meter/health_meter25.png</image>
-      <image>/images/health_meter/health_meter26.png</image>
-      <image>/images/health_meter/health_meter27.png</image>
-      <image>/images/health_meter/health_meter28.png</image>
-      <image>/images/health_meter/health_meter29.png</image>
-      <image>/images/health_meter/health_meter30.png</image>
-      <image>/images/health_meter/health_meter31.png</image>
-      <image>/images/health_meter/health_meter32.png</image>
-      <image>/images/health_meter/health_meter33.png</image>
-      <image>/images/health_meter/health_meter34.png</image>
-      <image>/images/health_meter/health_meter35.png</image>
-      <image>/images/health_meter/health_meter36.png</image>
-      <image>/images/health_meter/health_meter37.png</image>
-      <image>/images/health_meter/health_meter38.png</image>
-      <image>/images/health_meter/health_meter39.png</image>
-      <image>/images/health_meter/health_meter40.png</image>
-      <image>/images/health_meter/health_meter41.png</image>
-      <image>/images/health_meter/health_meter42.png</image>
-      <image>/images/health_meter/health_meter43.png</image>
-      <image>/images/health_meter/health_meter44.png</image>
-      <image>/images/health_meter/health_meter45.png</image>
-      <image>/images/health_meter/health_meter46.png</image>
-      <image>/images/health_meter/health_meter47.png</image>
-      <image>/images/health_meter/health_meter48.png</image>
-      <image>/images/health_meter/health_meter49.png</image>
-      <image>/images/health_meter/health_meter50.png</image>
-		</precache>
-		<splash>
-			<enabled>true</enabled>
-			<inline-css-images>true</inline-css-images>
-		</splash>
-		<theme>default</theme>
-	</mobileweb>
-	<modules>
-	</modules>
+    <deployment-targets>
+        <target device="mobileweb">true</target>
+        <target device="iphone">false</target>
+        <target device="ipad">false</target>
+        <target device="blackberry">false</target>
+        <target device="android">true</target>
+    </deployment-targets>
+    <sdk-version>2.0.1.GA2</sdk-version>
+    <id>com.looprecur.densohealthapp</id>
+    <name>densohealthapp</name>
+    <version>1.0</version>
+    <publisher>Denso</publisher>
+    <url>www.denso.com </url>
+    <description>Denso Health App</description>
+    <copyright>Denso 2012</copyright>
+    <icon>appicon.png</icon>
+    <persistent-wifi>false</persistent-wifi>
+    <prerendered-icon>false</prerendered-icon>
+    <statusbar-style>default</statusbar-style>
+    <statusbar-hidden>false</statusbar-hidden>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>e1ef4a44-46d6-40f3-85b4-5d1dd75e8296</guid>
+    <property name="ti.ui.defaultunit">system</property>
+    <iphone>
+        <orientations device="iphone">
+            <orientation>Ti.UI.PORTRAIT</orientation>
+        </orientations>
+        <orientations device="ipad">
+            <orientation>Ti.UI.PORTRAIT</orientation>
+            <orientation>Ti.UI.UPSIDE_PORTRAIT</orientation>
+            <orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
+            <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
+        </orientations>
+    </iphone>
+    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <mobileweb>
+        <precache>
+            <image>/images/health_meter/health_meter0.png</image>
+            <image>/images/health_meter/health_meter1.png</image>
+            <image>/images/health_meter/health_meter2.png</image>
+            <image>/images/health_meter/health_meter3.png</image>
+            <image>/images/health_meter/health_meter4.png</image>
+            <image>/images/health_meter/health_meter5.png</image>
+            <image>/images/health_meter/health_meter6.png</image>
+            <image>/images/health_meter/health_meter7.png</image>
+            <image>/images/health_meter/health_meter8.png</image>
+            <image>/images/health_meter/health_meter9.png</image>
+            <image>/images/health_meter/health_meter10.png</image>
+            <image>/images/health_meter/health_meter11.png</image>
+            <image>/images/health_meter/health_meter12.png</image>
+            <image>/images/health_meter/health_meter13.png</image>
+            <image>/images/health_meter/health_meter14.png</image>
+            <image>/images/health_meter/health_meter15.png</image>
+            <image>/images/health_meter/health_meter16.png</image>
+            <image>/images/health_meter/health_meter17.png</image>
+            <image>/images/health_meter/health_meter18.png</image>
+            <image>/images/health_meter/health_meter19.png</image>
+            <image>/images/health_meter/health_meter20.png</image>
+            <image>/images/health_meter/health_meter21.png</image>
+            <image>/images/health_meter/health_meter22.png</image>
+            <image>/images/health_meter/health_meter23.png</image>
+            <image>/images/health_meter/health_meter24.png</image>
+            <image>/images/health_meter/health_meter25.png</image>
+            <image>/images/health_meter/health_meter26.png</image>
+            <image>/images/health_meter/health_meter27.png</image>
+            <image>/images/health_meter/health_meter28.png</image>
+            <image>/images/health_meter/health_meter29.png</image>
+            <image>/images/health_meter/health_meter30.png</image>
+            <image>/images/health_meter/health_meter31.png</image>
+            <image>/images/health_meter/health_meter32.png</image>
+            <image>/images/health_meter/health_meter33.png</image>
+            <image>/images/health_meter/health_meter34.png</image>
+            <image>/images/health_meter/health_meter35.png</image>
+            <image>/images/health_meter/health_meter36.png</image>
+            <image>/images/health_meter/health_meter37.png</image>
+            <image>/images/health_meter/health_meter38.png</image>
+            <image>/images/health_meter/health_meter39.png</image>
+            <image>/images/health_meter/health_meter40.png</image>
+            <image>/images/health_meter/health_meter41.png</image>
+            <image>/images/health_meter/health_meter42.png</image>
+            <image>/images/health_meter/health_meter43.png</image>
+            <image>/images/health_meter/health_meter44.png</image>
+            <image>/images/health_meter/health_meter45.png</image>
+            <image>/images/health_meter/health_meter46.png</image>
+            <image>/images/health_meter/health_meter47.png</image>
+            <image>/images/health_meter/health_meter48.png</image>
+            <image>/images/health_meter/health_meter49.png</image>
+            <image>/images/health_meter/health_meter50.png</image>
+        </precache>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules/>
 </ti:app>
