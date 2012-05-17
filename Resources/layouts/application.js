@@ -39,11 +39,10 @@ Layouts.application = (function() {
           zIndex: 15
         }),
 
-        carIcon = Ti.UI.createView({
-          backgroundColor: 'white',
-          height: 20,
-          width: 40,
-          top: 10,
+        carIcon = Ti.UI.createImageView({
+          image: '/images/topbar_car_icon.png',
+          height: 36,
+          width: 36,
           right: 160
         }),
 
@@ -63,7 +62,7 @@ Layouts.application = (function() {
         }),
   
         powerButton = Ti.UI.createButton({
-          backgroundImage: 'images/topbar_on_btn.png',
+          backgroundImage: '/images/topbar_on_btn.png',
           width: 20,
           height: 20,
           top: 10,
@@ -71,8 +70,8 @@ Layouts.application = (function() {
         }),
 
         emergencyButton = Ti.UI.createButton({
-          backgroundImage: 'images/top_bar_emergency_btn.png',
-          backgroundSelectedImage: 'images/top_bar_emergency_btn_a.png',
+          backgroundImage: '/images/top_bar_emergency_btn.png',
+          backgroundSelectedImage: '/images/top_bar_emergency_btn_a.png',
           width: 35,
           height: 35,
           left: 5
@@ -180,18 +179,18 @@ Layouts.application = (function() {
           height: 20
         }),
 
-        smallVolume = Ti.UI.createView({
-          backgroundColor: 'white',
-          height: 10,
-          width: 10,
-          right: 230
+        smallVolume = Ti.UI.createImageView({
+          image: '/images/media_bar_low_vol.png',
+          height: 25,
+          width: 25,
+          right: 220
         }),
 
-        largeVolume = Ti.UI.createView({
-          backgroundColor: 'white',
-          height: 10,
-          width: 10,
-          right: 10
+        largeVolume = Ti.UI.createImageView({
+          image: '/images/media_bar_hi_vol.png',
+          height: 25,
+          width: 25,
+          right: 2
         });
 
     mediaPlayer.add(smallVolume);
@@ -223,11 +222,12 @@ Layouts.application = (function() {
           zIndex: 15
         }),
 
-        sideBarBack = Ti.UI.createLabel({
-          text: '< Home',
-          top: 100,
+        sideBarBack = Ti.UI.createImageView({
+          image: '/images/sidebar_backhome.png',
+          top: 95,
           left: 10,
-          color: 'white',
+          height: 19,
+          width: 63,
           zIndex: 15
         }),
 
@@ -249,9 +249,9 @@ Layouts.application = (function() {
     for (var i=0, len=sidePanelData.length; i < len; i++) {
       var data = sidePanelData[i],
           row = Ti.UI.createTableViewRow({
-            color: 'white',
             width: '100%',
-            height: 80
+            height: 80,
+            backgroundImage: ((sidePanelData[i].title == "Health") ? '/images/health_background.png' : ''),
           }),
 
           icon = Ti.UI.createView({
@@ -284,6 +284,13 @@ Layouts.application = (function() {
     sideBarInner.setData(rows);
     sideBar.add(sideBarInner);
     win.add(sideBarBack);
+
+    sideBarBack.addEventListener('click', function() {
+      Layouts.application.contentRightView.clear();  
+      Layouts.application.contentRightView.clear();  
+      Controllers.health.index();
+    });
+
     win.add(underTheHood);
     win.add(sideBar);
   };
@@ -292,15 +299,15 @@ Layouts.application = (function() {
     var healthAutoBox = Ti.UI.createView({
           backgroundImage: '/images/health_auto_box.png',
           top: 50,
-          left: 350,
+          left: '32%',
           width: 194,
           height: 59
         });
 
-    var carPreview = Ti.UI.createView({
-          backgroundColor: 'white',
-          width: 45,
-          height: 45,
+    var carPreview = Ti.UI.createImageView({
+          image: '/images/cadillac_xts_avatar.png',
+          width: 40,
+          height: 40,
           top: 7,
           left: 5
         });

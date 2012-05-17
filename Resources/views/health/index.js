@@ -3,7 +3,8 @@ Views.health.index = function() {
   var carListView = Ti.UI.createView({
         width: 352,
         height: 517,
-        right: '10%',
+        right: '20%',
+        top: 100,
         backgroundImage: '/images/health_main_content_box.png'
       }),
 
@@ -14,9 +15,9 @@ Views.health.index = function() {
       }),
 
       socketView = Ti.UI.createWebView({
-        visible:false, 
+        visible: false,
         url: (function() {
-                return isAndroid ? "/pages/socket_connector/andriod_connect.html" : "/pages/socket_connector/mobileweb_connect.html"
+                return isAndroid ? "/pages/socket_connector/android_connect.html" : "/pages/socket_connector/mobileweb_connect.html"
               }())
         }),
 

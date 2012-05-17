@@ -6,45 +6,48 @@ Views.health.show = function(healthItem) {
         backgroundImage: '/images/health_wiper_focus_top_bg.png',
         height: 278,
         width: 352,
-        right: 25,
-        top: 60
+        right: '20%',
+        top: 100
       }),
         
       itemLabel = Ti.UI.createLabel({
         text: healthItem.title,
-        top: 5,
+        top: 15,
         left: 10,
         color: 'white'
       }),
-     
-      itemImage = Ti.UI.createImageView({
-        image: healthItem.image,
-        top: 5,
-        left: 100,
-        height: 30,
-        width: 30
+
+      itemSeparator = Ti.UI.createImageView({
+        image: '/images/health_wiper_focus_separator.png',
+        height: 10,
+        width: 324,
+        top: 40,
+        left: 10
       }),
      
+/*      itemImage = Ti.UI.createImageView({
+        image: healthItem.image,
+        top: 0,
+        height: 30,
+        width: 36
+      }),*/
+
       itemStatus = _createItemStatusView(healthItem),
      
       itemGuide = Ti.UI.createView({
-        backgroundColor: 'white',
-        top: 50,
-        left: 175,
-        width: 125,
-        height: 75
+        backgroundImage: '/images/wiperfocus_view_in_guide_btn.png',
+        backgroundSelectedImage: '/images/wiperfocus_view_in_guide_btn_p.png',
+        top: 60,
+        left: 190,
+        width: 150,
+        height: 55
       }),
 
-      itemGuideLabel = Ti.UI.createLabel({
-        text: "View\nin Guide",
-        color: 'black'
-      }),
-     
-      itemVideo = Ti.UI.createView({
-        height: 100,
-        width: 200,
-        backgroundColor: 'white',
-        top: 150,
+      itemVideo = Ti.UI.createImageView({
+        image: '/images/health_wiper_focus_top_section_all_bottom.png',
+        height: 144,
+        width: 324,
+        top: 130,
         left: 10
       }),
 
@@ -52,8 +55,8 @@ Views.health.show = function(healthItem) {
         backgroundImage: '/images/health_wiper_focus_poi_bg.png',
         height: 222,
         width: 352,
-        right: 25,
-        top: 368
+        right: '20%',
+        top: 408
       }),
 
       wiperFluidPoiInner = Ti.UI.createView({
@@ -62,12 +65,11 @@ Views.health.show = function(healthItem) {
         width: 324
       });
      
-
-  itemGuide.add(itemGuideLabel);
   itemFocus.add(itemLabel);
-  itemFocus.add(itemImage);
-  itemFocus.add(itemStatus);
+  itemFocus.add(itemSeparator);
+  //itemFocus.add(itemImage);
   itemFocus.add(itemGuide);
+  itemFocus.add(itemStatus);
   itemFocus.add(itemVideo);
 
   itemLabel.addEventListener('click', function() {

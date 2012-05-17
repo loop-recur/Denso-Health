@@ -1,8 +1,6 @@
 var _buildHealthItemList = function(carListViewInner) {
   var carHealthItems = [
                         {title:"Wiper Fluid", type:"FluidStat", input_name: 'washer_fluid_level'},
-                        {title:"Brake Fluid", type:"FluidStat", input_name: "brake_fluid"},
-                        {title:"Power Steering Fluid", type:"FluidStat"},
                         {title:"Coolant", type:"FluidStat", input_name: "coolant_fluid"},
                         {title:"Oil", type:"FluidStat", input_name: "oil_pressure"},
                         {title:"Transmission Fluid", type:"FluidStat", input_name: "transmission_fluid"},
@@ -10,10 +8,12 @@ var _buildHealthItemList = function(carListViewInner) {
                         {title:"Front Passenger Tire", type:"AirStat", input_name: "tire_2_pressure"},
                         {title:"Rear Driver Tire", type:"AirStat", input_name: "tire_3_pressure"},
                         {title:"Rear Passenger Tire", type:"AirStat", input_name: "tire_4_pressure"},
-                        {title:"Front Driver Shock", type:"MechStat", input_name: ""},
+                        {title:"Brake Fluid", type:"FluidStat", input_name: "brake_fluid"},
+                        {title:"Power Steering Fluid", type:"FluidStat"}
+                        /*{title:"Front Driver Shock", type:"MechStat", input_name: ""},
                         {title:"Front Passenger Shock", type:"MechStat", input_name: ""},
                         {title:"Rear Driver Shock", type:"MechStat", input_name: ""},
-                        {title:"Rear Passenger Shock", type:"MechStat", input_name: ""}
+                        {title:"Rear Passenger Shock", type:"MechStat", input_name: ""}*/
                        ];
 
     var makeRow = function(i) {
@@ -22,7 +22,6 @@ var _buildHealthItemList = function(carListViewInner) {
           stat = hi.stat,
 
           row = Ti.UI.createTableViewRow({
-            className: i.title,
             color: 'white',
             width: '95%',
             healthItem: hi,
@@ -43,7 +42,7 @@ var _buildHealthItemList = function(carListViewInner) {
           }),
 
           statusImage = Ti.UI.createImageView({
-            image: '',
+            repeatCount: 1,
             right: 5,
             height: 20,
             width: 20
@@ -56,6 +55,10 @@ var _buildHealthItemList = function(carListViewInner) {
             width: 20
           });
 
+      statusImage.addEventListener('stop', function() {
+        statusImage.image = last(statusImage.images);
+      });
+
       row.add(titleLabel);
       row.add(statusLabel);
       row.add(statusImage);
@@ -63,14 +66,17 @@ var _buildHealthItemList = function(carListViewInner) {
       row.addEventListener('click', showItem);
       row.refresh = function() { 
         statusLabel.text = hi.stat.report(); 
-        statusImage.image = hi.stat.reportImage();
-        this.attention = hi.stat.attention;
-        if(hi.stat.attention) {
-          alertImage.image = '/images/health_list_alert.png';
-        }
+        //statusImage.images = hi.stat.reportImages();
+        statusImage.image = last(hi.stat.reportImages());
+        //statusImage.start();
+        //this.attention = hi.stat.attention;
+        //if(hi.stat.attention) {
+        //  alertImage.image = '/images/health_list_alert.png';
+        //}
       };
       return row;
     };
+
 
     var showItem = function() {
           Layouts.application.contentRightView.clear();
@@ -89,7 +95,7 @@ var _buildHealthItemList = function(carListViewInner) {
     var healthItem = row.healthItem, 
         updatedData = filterByProperty('input_name', row.input_name, data);
 
-    if(updatedData) {
+    if(updatedData && healthItem.stat.needsUpdate(updatedData.input_value)) {
       healthItem.stat.update(updatedData.input_value); 
       row.refresh();
     }
@@ -100,7 +106,7 @@ var _buildHealthItemList = function(carListViewInner) {
         children = carListViewInner.data[0].rows;
 
     map(updateStat(data), children);
-    children.sort(sortAttention);
+    //children.sort(sortAttention);
     carListViewInner.setData(children);
   };
 

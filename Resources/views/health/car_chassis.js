@@ -3,7 +3,8 @@ Views.health.carChassis = function() {
       carView : Ti.UI.createView({
         width: 352,
         height: 517,
-        left: '10%',
+        left: '20%',
+        top: 100,
         backgroundImage: '/images/health_main_content_box.png'
       }),
 
@@ -22,7 +23,7 @@ Views.health.carChassis = function() {
       })
   };
 
-  self.carChassisView.add(self.overAllHealth);
+  self.carView.add(self.overAllHealth);
   self.carView.add(self.carChassisView);
   return self.carView;
 };

@@ -271,3 +271,17 @@ empty = function(xs) {
 headTail = defn(function(fun, xs) {
 	return fun.apply(fun, [first(xs), rest(xs)]);
 });
+
+unfold = function(fun, guardFun, nextFun, seed) {
+  var result = [],
+      nextFun = nextFun.toFunction(),
+      guardFun = guardFun.toFunction();
+
+  while(guardFun(seed)) {
+    result.push(fun(seed));
+    seed = nextFun(seed);
+    //console.log('====' +seed+'===');
+  }
+
+  return result;
+};
