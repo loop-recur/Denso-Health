@@ -69,10 +69,10 @@ var _buildHealthItemList = function(carListViewInner) {
         //statusImage.images = hi.stat.reportImages();
         statusImage.image = last(hi.stat.reportImages());
         //statusImage.start();
-        //this.attention = hi.stat.attention;
-        //if(hi.stat.attention) {
-        //  alertImage.image = '/images/health_list_alert.png';
-        //}
+        this.attention = hi.stat.attention;
+        if(hi.stat.attention) {
+          alertImage.image = '/images/health_list_alert.png';
+        }
       };
       return row;
     };
@@ -97,8 +97,9 @@ var _buildHealthItemList = function(carListViewInner) {
 
     if(updatedData && healthItem.stat.needsUpdate(updatedData.input_value)) {
       healthItem.stat.update(updatedData.input_value); 
-      row.refresh();
     }
+
+    row.refresh();
   });
 
   var updateStats = function(e) {
@@ -106,7 +107,7 @@ var _buildHealthItemList = function(carListViewInner) {
         children = carListViewInner.data[0].rows;
 
     map(updateStat(data), children);
-    //children.sort(sortAttention);
+    children.sort(sortAttention);
     carListViewInner.setData(children);
   };
 
