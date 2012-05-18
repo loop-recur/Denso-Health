@@ -2,10 +2,13 @@
 <head> 
 	<script> 
 		document.write(unescape("%3Cscript src="+parent.SocketIp+"/socket.io/socket.io.js"+" %3E%3C/script%3E"));
-    socket = io.connect(parent.SocketIp);
-		socket.on("car_stats_received", function(data){ 
-			parent.Ti.App.fireEvent("car_stats_received", data); 
-		}); 
+		setTimeout(function(){
+			socket = io.connect(parent.SocketIp);
+			socket.on("car_stats_received", function(data){ 
+				parent.Ti.App.fireEvent("car_stats_received", data); 
+			});
+		}, 1000);
+
 	</script> 
 </head>	
 <body style="background-color:blue;">

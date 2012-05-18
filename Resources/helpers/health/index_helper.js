@@ -1,15 +1,13 @@
 var _buildHealthItemList = function(carListViewInner) {
   var carHealthItems = [
+												{title:"Gas Level", type:"FluidStat", input_name: 'gas_level'},
                         {title:"Wiper Fluid", type:"FluidStat", input_name: 'washer_fluid_level'},
-                        {title:"Coolant", type:"FluidStat", input_name: "coolant_fluid"},
                         {title:"Oil", type:"FluidStat", input_name: "oil_pressure"},
                         {title:"Transmission Fluid", type:"FluidStat", input_name: "transmission_fluid"},
                         {title:"Front Driver Tire", type:"AirStat", input_name: "tire_1_pressure"},
                         {title:"Front Passenger Tire", type:"AirStat", input_name: "tire_2_pressure"},
                         {title:"Rear Driver Tire", type:"AirStat", input_name: "tire_3_pressure"},
-                        {title:"Rear Passenger Tire", type:"AirStat", input_name: "tire_4_pressure"},
-                        {title:"Brake Fluid", type:"FluidStat", input_name: "brake_fluid"},
-                        {title:"Power Steering Fluid", type:"FluidStat"}
+                        {title:"Rear Passenger Tire", type:"AirStat", input_name: "tire_4_pressure"}
                         /*{title:"Front Driver Shock", type:"MechStat", input_name: ""},
                         {title:"Front Passenger Shock", type:"MechStat", input_name: ""},
                         {title:"Rear Driver Shock", type:"MechStat", input_name: ""},

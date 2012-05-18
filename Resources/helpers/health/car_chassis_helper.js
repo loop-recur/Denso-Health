@@ -9,7 +9,7 @@ carChassisHelper = function(view) {
   map(_buildChassisItem, chassisItems);
 
   view.update = function(healthItem) {
-    view[healthItem.input_name].image = healthItem.stat.reportChassisImage(healthItem.input_name);
+    if(view[healthItem.input_name]) view[healthItem.input_name].image = healthItem.stat.reportChassisImage(healthItem.input_name);
   };  
 };
 
