@@ -84,6 +84,8 @@ var _buildHealthItemList = function(carListViewInner) {
 
     var showItem = function() {
           Layouts.application.contentRightView.clear();
+          Ti.App.removeEventListener('car_stats_received', updateStats);
+          Ti.App.fireEvent('onShow');
           Controllers.health.show(this.healthItem);  
         };
 
