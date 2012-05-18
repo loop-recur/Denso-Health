@@ -1,10 +1,10 @@
 var SocketIp;
 Ti.include('/initializers/init.js');
+Ti.include('/theme_name.js');
+CurrentTheme = Theme(ThemeName);
+log(CurrentTheme);
 
-
-var win = Titanium.UI.createWindow({  
-      backgroundImage: '/images/main_bg_tan_leather_ptrn.png'
-    });
+var win = UI.createWindow();
 
 PromptConnect(function(ip){
 	SocketIp = ip;

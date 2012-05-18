@@ -27,15 +27,13 @@ var _buildHealthItemList = function(carListViewInner) {
             input_name: i.input_name
           }),
 
-          titleLabel = Ti.UI.createLabel({
+          titleLabel = UI.createLabel({
             text: i.title,
-            color: 'white',
             left: 20
           }),
 
-          statusLabel = Ti.UI.createLabel({
+          statusLabel = UI.createLabel({
             text: stat.report(),
-            color: 'white',
             right: 35 
           }),
 

@@ -203,10 +203,16 @@ merge = function(x,y) {
 		if(isObj(y[property])) {
 			merge(x[property], y[property]);
 		} else {
-			x[property] = y[property];
+			if(x && y) x[property] = y[property];
 		}
 	}
 	return x;
+}
+
+safe_merge = function(x,y) {
+	x = x || {};
+	y = y || {};
+	return merge(x, y);
 }
 
 sortBy = defn(function(fun, xs) {

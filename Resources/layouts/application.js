@@ -46,17 +46,15 @@ Layouts.application = (function() {
           right: 160
         }),
 
-        time = Ti.UI.createLabel({
+        time = UI.createLabel({
           text: DateFormatter.time(),
           font: {fontSize: 25},
-          color: 'white',
           top: 5
         }),
 
-        date = Ti.UI.createLabel({
+        date = UI.createLabel({
           text: DateFormatter.date(),
           font: {fontSize: 16},
-          color: 'white',
           top: 12,
           left: 50
         }),
