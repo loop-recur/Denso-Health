@@ -27,13 +27,12 @@ Stat.prototype = {
 	reportImages: function() {
                         if(this.level < 0 && this.level > 100) return [];
 												return unfoldr(this.getStepFun(), this.oldLevel);
-                      }
+                      },
 
   reportChassisLevel: function() {
-    if(this.levelIsHigh) return "green";
-		if(this.levelIsMedium) return "yellow";
-		if(this.levelIsLow) return "red";
-		return "";
+		if(this.levelIsLow()) return "red";
+		if(this.levelIsMedium()) return "yellow";
+    if(this.levelIsHigh()) return "green";
   }
 
 };
@@ -74,7 +73,7 @@ FluidStat = function() {
 
 	this.levelIsHigh = function() { return (this.level > 68 && this.level <= 100); };
 	this.levelIsMedium = function() { return (this.level > 46 && this.level <= 68); };
-	this.levelIsLow = function() { return (this.level > 1 && this.level <= 46); };
+	this.levelIsLow = function() { return (this.level >= 0 && this.level <= 46); };
 
   this._setAttention = function(msg) { this.attention = (msg == "Very Low") };
 
@@ -157,7 +156,7 @@ AirStat = function() {
 	
 	this.levelIsHigh = function(){ return (this.level > 38 && this.level <= 50); };
 	this.levelIsMedium = function(){ return (this.level > 23 && this.level <= 38); };
-	this.levelIsLow = function(){ return (this.level > 0 && this.level <= 23); };
+	this.levelIsLow = function(){ return (this.level >= 0 && this.level <= 23); };
 
 };
 
