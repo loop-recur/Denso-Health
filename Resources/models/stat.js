@@ -27,7 +27,14 @@ Stat.prototype = {
 	reportImages: function() {
                         if(this.level < 0 && this.level > 100) return [];
 												return unfoldr(this.getStepFun(), this.oldLevel);
-                      }
+                      },
+
+  reportChassisLevel: function() {
+		if(this.levelIsLow()) return "red";
+		if(this.levelIsMedium()) return "yellow";
+    if(this.levelIsHigh()) return "green";
+  }
+
 };
 
 
@@ -64,19 +71,9 @@ FluidStat = function() {
     return (this.level >= 0 && this.level <= 100) ? ('/images/health_meter/health_meter'+Math.round(this.level/2)+'.png') : ''
   };
 
-  this.reportChassisImage = function(itemName) {
-    var thresh = this._reportThreshold();
-    if(this.level > 68 && this.level <= 100) {
-      return "/images/chassis/chassis_"+itemName+"_green.png";
-    } else if(this.level > 46 && this.level <= 68) {
-      return "/images/chassis/chassis_"+itemName+"_yellow.png";
-
-    } else if(this.level > 1 && this.level <= 46) {
-      return "/images/chassis/chassis_"+itemName+"_red.png";
-    } else {
-      return "";
-    }
-  }
+	this.levelIsHigh = function() { return (this.level > 68 && this.level <= 100); };
+	this.levelIsMedium = function() { return (this.level > 46 && this.level <= 68); };
+	this.levelIsLow = function() { return (this.level >= 0 && this.level <= 46); };
 
   this._setAttention = function(msg) { this.attention = (msg == "Very Low") };
 
@@ -156,19 +153,10 @@ AirStat = function() {
  	this.getImageFun = getMeterImage;
 
   this._setAttention = function() { this.attention = (this.level <= 23) };
-
-  this.reportChassisImage = function(itemName) {
-    if(this.level > 38 && this.level <= 50) {
-      return "/images/chassis/chassis_"+itemName+"_green.png";
-    } else if(this.level > 23 && this.level <= 38) {
-      return "/images/chassis/chassis_"+itemName+"_yellow.png";
-
-    } else if(this.level > 0 && this.level <= 23) {
-      return "/images/chassis/chassis_"+itemName+"_red.png";
-    } else {
-      return "";
-    }
-  }
+	
+	this.levelIsHigh = function(){ return (this.level > 38 && this.level <= 50); };
+	this.levelIsMedium = function(){ return (this.level > 23 && this.level <= 38); };
+	this.levelIsLow = function(){ return (this.level >= 0 && this.level <= 23); };
 
 };
 
