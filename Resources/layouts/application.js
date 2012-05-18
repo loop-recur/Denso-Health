@@ -23,7 +23,7 @@ Layouts.application = (function() {
       }
     });
 
-    Layouts.application.contentLeftView.add(Views.health.carChassis());
+    Layouts.application.contentLeftView.add(Views.health.carChassis.init());
     Layouts.application.contentView.add(Layouts.application.contentLeftView);
     Layouts.application.contentView.add(Layouts.application.contentRightView);
     win.add(Layouts.application.contentView);

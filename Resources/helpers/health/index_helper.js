@@ -9,7 +9,7 @@ var _buildHealthItemList = function(carListViewInner) {
                         {title:"Rear Driver Tire", type:"AirStat", input_name: "tire_3_pressure"},
                         {title:"Rear Passenger Tire", type:"AirStat", input_name: "tire_4_pressure"},
                         {title:"Brake Fluid", type:"FluidStat", input_name: "brake_fluid"},
-                        {title:"Power Steering Fluid", type:"FluidStat"}
+                        {title:"Power Steering Fluid", type:"FluidStat", input_name: 'power_steering_fluid'}
                         /*{title:"Front Driver Shock", type:"MechStat", input_name: ""},
                         {title:"Front Passenger Shock", type:"MechStat", input_name: ""},
                         {title:"Rear Driver Shock", type:"MechStat", input_name: ""},
@@ -97,6 +97,7 @@ var _buildHealthItemList = function(carListViewInner) {
 
     if(updatedData && healthItem.stat.needsUpdate(updatedData.input_value)) {
       healthItem.stat.update(updatedData.input_value); 
+      Views.health.carChassis.update(healthItem);
     }
 
     row.refresh();
