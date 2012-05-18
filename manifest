@@ -1,9 +1,9 @@
-#appname: densohealthapp
-#appid: com.looprecur.densohealthapp
-#type: mobile
-#guid: e1ef4a44-46d6-40f3-85b4-5d1dd75e8296
-#version: 1.0
-#publisher: not specified
-#url: not specified
-#image: appicon.png
-#desc: not specified
+#appname:densohealthapp
+#appid:com.looprecur.densohealthapp
+#type:mobile
+#guid:e1ef4a44-46d6-40f3-85b4-5d1dd75e8296
+#version:1.0
+#publisher:Denso
+#url:www.denso.com
+#image:appicon.png
+#desc:Denso Health App
