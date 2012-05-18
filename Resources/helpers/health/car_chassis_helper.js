@@ -1,6 +1,10 @@
 carChassisHelper = function(view) {
   var chassisItems = ['washer_fluid_level', 'coolant_fluid', 'oil_pressure', 'transmission_fluid', 'tire_1_pressure', 'tire_2_pressure', 'tire_3_pressure', 'tire_4_pressure', 'brake_fluid', 'power_steering_fluid'];
 
+	var _chassisImage = function(itemName, level) {
+		"/images/chassis/chassis_"+itemName+"_"+level+".png"
+	}
+
   var _buildChassisItem = function(title) {
     view[title] = view.buildChassisItem();
     view.carView.add(view[title]);
@@ -9,7 +13,7 @@ carChassisHelper = function(view) {
   map(_buildChassisItem, chassisItems);
 
   view.update = function(healthItem) {
-    if(view[healthItem.input_name]) view[healthItem.input_name].image = healthItem.stat.reportChassisImage(healthItem.input_name);
+    if(view[healthItem.input_name]) view[healthItem.input_name].image = _chassisImage(healthItem.input_name, healthItem.stat.reportChassisLevel());
   };  
 };
 
