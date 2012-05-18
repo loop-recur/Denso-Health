@@ -5,7 +5,7 @@ Views.health.show = function(healthItem) {
     var itemFocus = Ti.UI.createView({
         backgroundImage: '/images/health_wiper_focus_top_bg.png',
         height: 278,
-        width: 352,
+       width: 352,
         right: '20%',
         top: 100
       }),
@@ -76,6 +76,11 @@ Views.health.show = function(healthItem) {
     Layouts.application.contentRightView.clear();  
     Layouts.application.contentRightView.clear();  
     Controllers.health.index();
+  });
+
+  itemGuide.addEventListener('click', function() {
+    Ti.UI.createAlertDialog({
+      message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus placerat lorem id diam molestie non tincidunt nulla blandit. Fusce et dui ante. Sed velit eros, adipiscing vel viverra eget, tincidunt ut metus. Sed in fringilla libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris blandit aliquam ante sed laoreet. Duis quis urna lacus. Phasellus vehicula suscipit commodo. Donec rutrum, urna sed egestas rutrum, nunc diam tempus felis, at rutrum sem urna ac metus. Nunc pretium cursus nulla in luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris quis erat mi. Aliquam erat volutpat. Sed vel diam vel ipsum aliquet ullamcorper ut semper libero."}).show();
   });
        
   wiperFluidPoi.add(wiperFluidPoiInner);
