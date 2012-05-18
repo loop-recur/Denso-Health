@@ -1,12 +1,33 @@
+var halfAndRound = function(n) { return Math.round(n/2); };
+var getMeterImage = function(n) { return '/images/health_meter/health_meter'+n+'.png'; };
+
 Stat = function() { this.level = 0; };
 Stat.prototype = {
+	attention: false,
+  
   reportLevel: function() { return this.level; },
+
   update: function(n) { 
     this.oldLevel = this.level;
     this.level = Number(n); 
   },
-  attention: false,
-  needsUpdate: function(n) { return n != this.level;}
+
+  needsUpdate: function(n) { return n != this.level;},
+
+	getImageFun: compose(getMeterImage, halfAndRound),
+	
+	getStepFun: function() {
+		var self = this;
+		var incIfGreater = function(n){ if(self.level > n) return [self.getImageFun(n), n+1]; }
+		var decIfLower = function(n){ if(self.level < n) return [self.getImageFun(n), n-1]; }
+
+		return this.oldLevel > this.level ? decIfLower : incIfGreater;
+	},
+	
+	reportImages: function() {
+                        if(this.level < 0 && this.level > 100) return [];
+												return unfoldr(this.getStepFun(), this.oldLevel);
+                      }
 };
 
 
@@ -42,16 +63,6 @@ FluidStat = function() {
   this.reportStaticImage = function() {
     return (this.level >= 0 && this.level <= 100) ? ('/images/health_meter/health_meter'+Math.round(this.level/2)+'.png') : ''
   };
-
-  this.reportImages = function() {
-                        var roundReport = function(n) { return Math.round(n/2); },
-                            makeImage = function(n) { return '/images/health_meter/health_meter'+n+'.png'; },
-                            nextFun = (this.oldLevel > this.level ? subtract(1) : "+1"), 
-                            guardFun = (this.oldLevel > this.level ? "<=" : ">="); 
-
-                        if(this.level < 0 && this.level > 100) return [];
-                        return unfold(compose(makeImage, roundReport), lambda(guardFun).p(this.level), nextFun,  this.oldLevel)
-                      };
 
   this._setAttention = function(msg) { this.attention = (msg == "Very Low") };
 
@@ -119,14 +130,7 @@ AirStat = function() {
     return (this.level >= 0 && this.level <= 50) ? ('/images/health_meter/health_meter'+this.level+'.png') : ''
   };
 
-  this.reportImages = function() {
-                      var makeImage = function(n) { return '/images/health_meter/health_meter'+n+'.png'; },
-                          nextFun = (this.oldLevel > this.level ? subtract(1) : "+1"),
-                          guardFun = (this.oldLevel > this.level ? "<=" : ">="); 
-
-                      if(this.level < 0 && this.level > 50) return [];
-                      return unfold(makeImage, lambda(guardFun).p(this.level), nextFun,  this.oldLevel)
-  };
+ 	this.getImageFun = getMeterImage;
 };
 
 MechStat.prototype = new Stat();

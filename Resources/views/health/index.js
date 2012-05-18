@@ -15,13 +15,19 @@ Views.health.index = function() {
       }),
 
       socketView = Ti.UI.createWebView({
-        visible: false,
-        url: (function() {
-                return isAndroid ? "/pages/socket_connector/android_connect.html" : "/pages/socket_connector/mobileweb_connect.html"
-              }())
-        }),
+        visible: true,
+				width: 100,
+				height: 100,
+				zIndex:999
+       }),
 
       carListData = _buildHealthItemList(carListViewInner);
+			
+			if(isAndroid) {
+				socketView.html = SocketPage(SocketIp);
+			} else {
+				socketView.url = "/pages/socket_page.html";
+			}
 
   carListViewInner.setData(carListData);
   carListView.add(carListViewInner);

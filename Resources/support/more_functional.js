@@ -137,6 +137,7 @@ uniqBy = defn(function(fun, xs) {
 })
 
 when = defn(function(pred, f) {
+	f = f.toFunction();
 	return function() {
 		if(pred.apply(this, arguments)) return f.apply(this, arguments);
 	}
@@ -272,16 +273,13 @@ headTail = defn(function(fun, xs) {
 	return fun.apply(fun, [first(xs), rest(xs)]);
 });
 
-unfold = function(fun, guardFun, nextFun, seed) {
-  var result = [],
-      nextFun = nextFun.toFunction(),
-      guardFun = guardFun.toFunction();
+unfoldr = defn(function(step, seed) {
+	var output = [], times = 0, result;
 
-  while(guardFun(seed)) {
-    result.push(fun(seed));
-    seed = nextFun(seed);
-    //console.log('====' +seed+'===');
-  }
+	while ((result = step(seed)) && times < 100) {
+    output.push(result[0]);
+    seed = result[1];
+	}
 
-  return result;
-};
+	return output;
+});

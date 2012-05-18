@@ -43,6 +43,7 @@ var _buildHealthItemList = function(carListViewInner) {
 
           statusImage = Ti.UI.createImageView({
             repeatCount: 1,
+						duration: 20,
             right: 5,
             height: 20,
             width: 20
@@ -55,24 +56,32 @@ var _buildHealthItemList = function(carListViewInner) {
             width: 20
           });
 
-      statusImage.addEventListener('stop', function() {
-        statusImage.image = last(statusImage.images);
-      });
+			var clearImages = function() {
+				log("CALLING STOP");
+				if(statusImage.images) statusImage.image = last(statusImage.images);
+				statusImage.removeEventListener('stop', clearImages);
+				if(isAndroid) statusImage.images = null;
+			}
 
       row.add(titleLabel);
       row.add(statusLabel);
       row.add(statusImage);
       row.add(alertImage);
       row.addEventListener('click', showItem);
-      row.refresh = function() { 
-        statusLabel.text = hi.stat.report(); 
-        //statusImage.images = hi.stat.reportImages();
-        statusImage.image = last(hi.stat.reportImages());
-        //statusImage.start();
-        //this.attention = hi.stat.attention;
-        //if(hi.stat.attention) {
-        //  alertImage.image = '/images/health_list_alert.png';
-        //}
+      row.refresh = function() {
+				statusImage.images = null;
+				var imgs = hi.stat.reportImages();
+        statusLabel.text = hi.stat.report();
+        statusImage.images = imgs;
+				log("CALLING START");
+				// statusImage.addEventListener('stop', clearImages);
+        statusImage.start();
+				// setTimeout(function(){statusImage.stop();}, 3500);
+				if(!isAndroid) statusImage.addEventListener('stop', clearImages);
+        this.attention = hi.stat.attention;
+        if(hi.stat.attention) {
+         alertImage.image = '/images/health_list_alert.png';
+        }
       };
       return row;
     };
@@ -107,7 +116,7 @@ var _buildHealthItemList = function(carListViewInner) {
 
     map(updateStat(data), children);
     //children.sort(sortAttention);
-    carListViewInner.setData(children);
+    // carListViewInner.setData(children);
   };
 
   var rows = map(makeRow, carHealthItems);

@@ -18,12 +18,18 @@ require('views/health/show');
 require('controllers/application');
 require('controllers/health');*/
 
+Ti.include('../support/date.js');
+Ti.include("../lib/socket_page.js");
+Ti.include('../lib/date_formatter.js');
+Ti.include('../support/functional.js');
+Ti.include('../support/more_functional.js');
+Ti.include('../lib/android_file_cache.js');
+Ti.include('../lib/html_file_cache.js');
+Ti.include('../lib/file_cache.js');
 Ti.include('../models/stat.js');
 Ti.include('../models/health_item.js');
-Ti.include('../support/date.js');
-Ti.include('../lib/date_formatter.js');
-Ti.include('../lib/functional.js');
-Ti.include('../lib/more_functional.js');
+Ti.include('../services/ip_wizard.js');
+Ti.include('../services/prompt_connect.js');
 Ti.include('../layouts/application.js');
 Ti.include('../views/health/index.js');
 Ti.include('../views/health/show.js');
