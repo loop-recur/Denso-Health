@@ -64,6 +64,20 @@ FluidStat = function() {
     return (this.level >= 0 && this.level <= 100) ? ('/images/health_meter/health_meter'+Math.round(this.level/2)+'.png') : ''
   };
 
+  this.reportChassisImage = function(itemName) {
+    var thresh = this._reportThreshold();
+    if(this.level > 68 && this.level <= 100) {
+      return "/images/chassis/chassis_"+itemName+"_green.png";
+    } else if(this.level > 46 && this.level <= 68) {
+      return "/images/chassis/chassis_"+itemName+"_yellow.png";
+
+    } else if(this.level > 1 && this.level <= 46) {
+      return "/images/chassis/chassis_"+itemName+"_red.png";
+    } else {
+      return "";
+    }
+  }
+
   this._setAttention = function(msg) { this.attention = (msg == "Very Low") };
 
   this._reportThreshold = function() {
@@ -120,9 +134,18 @@ AirStat = function() {
 
   this.availableMeasurement = 50;
 
+  this._reportThreshold = function() {
+                      for (t in this.thresholds) {
+                        if(this.thresholds.hasOwnProperty(t)  && +this.reportLevel() <= t) {
+                          return this.thresholds[t];
+                        }
+                      }
+                    };
+
   this.currentMeasurement = function() { return this.availableMeasurement * (this.level/50); };
 
   this.report = function() { 
+    this._setAttention();
     return (this.level >= 0 && this.level <= 50) ? (this.reportLevel() + ' psi') : ''; 
   };
 
@@ -131,6 +154,22 @@ AirStat = function() {
   };
 
  	this.getImageFun = getMeterImage;
+
+  this._setAttention = function() { this.attention = (this.level <= 23) };
+
+  this.reportChassisImage = function(itemName) {
+    if(this.level > 38 && this.level <= 50) {
+      return "/images/chassis/chassis_"+itemName+"_green.png";
+    } else if(this.level > 23 && this.level <= 38) {
+      return "/images/chassis/chassis_"+itemName+"_yellow.png";
+
+    } else if(this.level > 0 && this.level <= 23) {
+      return "/images/chassis/chassis_"+itemName+"_red.png";
+    } else {
+      return "";
+    }
+  }
+
 };
 
 MechStat.prototype = new Stat();

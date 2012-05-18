@@ -57,7 +57,6 @@ var _buildHealthItemList = function(carListViewInner) {
           });
 
 			var clearImages = function() {
-				log("CALLING STOP");
 				if(statusImage.images) statusImage.image = last(statusImage.images);
 				statusImage.removeEventListener('stop', clearImages);
 				if(isAndroid) statusImage.images = null;
@@ -73,10 +72,8 @@ var _buildHealthItemList = function(carListViewInner) {
 				var imgs = hi.stat.reportImages();
         statusLabel.text = hi.stat.report();
         statusImage.images = imgs;
-				log("CALLING START");
-				// statusImage.addEventListener('stop', clearImages);
+				statusImage.addEventListener('stop', clearImages);
         statusImage.start();
-				// setTimeout(function(){statusImage.stop();}, 3500);
 				if(!isAndroid) statusImage.addEventListener('stop', clearImages);
         this.attention = hi.stat.attention;
         if(hi.stat.attention) {
@@ -106,6 +103,7 @@ var _buildHealthItemList = function(carListViewInner) {
 
     if(updatedData && healthItem.stat.needsUpdate(updatedData.input_value)) {
       healthItem.stat.update(updatedData.input_value); 
+			Views.health.carChassis.update(healthItem);
       row.refresh();
     }
   });
@@ -113,10 +111,10 @@ var _buildHealthItemList = function(carListViewInner) {
   var updateStats = function(e) {
     var data = e.data,
         children = carListViewInner.data[0].rows;
-
+		// children.sort(sortAttention);
+		// carListViewInner.setData(children);
     map(updateStat(data), children);
-    //children.sort(sortAttention);
-    // carListViewInner.setData(children);
+
   };
 
   var rows = map(makeRow, carHealthItems);

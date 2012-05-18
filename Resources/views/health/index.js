@@ -15,10 +15,7 @@ Views.health.index = function() {
       }),
 
       socketView = Ti.UI.createWebView({
-        visible: true,
-				width: 100,
-				height: 100,
-				zIndex:999
+        visible: false
        }),
 
       carListData = _buildHealthItemList(carListViewInner);
