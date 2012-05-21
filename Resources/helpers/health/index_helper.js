@@ -81,7 +81,6 @@ var _buildHealthItemList = function(carListViewInner) {
       return row;
     };
 
-
     var showItem = function() {
           Layouts.application.contentRightView.clear();
           Ti.App.removeEventListener('car_stats_received', updateStats);

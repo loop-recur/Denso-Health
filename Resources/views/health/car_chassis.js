@@ -1,21 +1,20 @@
-Ti.include('/../helpers/health/car_chassis_helper.js');
+Ti.include('/helpers/health/car_chassis_helper.js');
 Views.health.carChassis = (function() {
   var self = {
-        carView : Ti.UI.createView({
-          width: 352,
+        carView: Ti.UI.createView({
+          width: 337,
           height: 517,
-          left: '20%',
-          top: 100,
+          left: 31,
+          top: 147,
           backgroundImage: '/images/health_main_content_box.png'
         }),
 
-        carChassisView : Ti.UI.createView({
+        carChassisView: Ti.UI.createView({
           backgroundImage: '/images/chassis/chassis_base.png',
-          width: 320,
-          height: 520
+          width: '100%'
         }),
 
-        overAllHealth : Ti.UI.createView({
+        overAllHealth: Ti.UI.createView({
           backgroundImage: '/images/health_overall_health_good.png',
           width: 84,
           height: 29,

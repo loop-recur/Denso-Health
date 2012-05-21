@@ -16,3 +16,4 @@ PromptConnect(function(ip){
 	Controllers.application.index();
 	win.open();
 });
+

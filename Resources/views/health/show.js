@@ -1,13 +1,18 @@
-Ti.include('/../helpers/health/show_helper.js');
+Ti.include('/helpers/health/show_helper.js');
 
 Views.health.show = function(healthItem) {
 
     var itemFocus = Ti.UI.createView({
         backgroundImage: '/images/health_wiper_focus_top_bg.png',
         height: 278,
-       width: 352,
-        right: '20%',
-        top: 100
+        width: 337,
+        left: 14,
+        top: 147
+      }),
+
+      itemFocusLabelView = Ti.UI.createView({
+        width: '100%',
+        layout: 'horizontal'
       }),
         
       itemLabel = Ti.UI.createLabel({
@@ -17,6 +22,14 @@ Views.health.show = function(healthItem) {
         color: 'white'
       }),
 
+      itemImage = Ti.UI.createImageView({
+        image: healthItem.image,
+        height: 30,
+        width: 36,
+        left: 5,
+        top: 5
+      }),
+
       itemSeparator = Ti.UI.createImageView({
         image: '/images/health_wiper_focus_separator.png',
         height: 10,
@@ -24,13 +37,6 @@ Views.health.show = function(healthItem) {
         top: 40,
         left: 10
       }),
-     
-/*      itemImage = Ti.UI.createImageView({
-        image: healthItem.image,
-        top: 0,
-        height: 30,
-        width: 36
-      }),*/
 
       itemStatus = _createItemStatusView(healthItem),
      
@@ -38,25 +44,54 @@ Views.health.show = function(healthItem) {
         backgroundImage: '/images/wiperfocus_view_in_guide_btn.png',
         backgroundSelectedImage: '/images/wiperfocus_view_in_guide_btn_p.png',
         top: 60,
-        left: 190,
+        left: 175,
         width: 150,
         height: 55
       }),
 
-      itemVideo = Ti.UI.createImageView({
+      /*itemVideo = Ti.UI.createImageView({
         image: '/images/health_wiper_focus_top_section_all_bottom.png',
         height: 144,
         width: 324,
         top: 130,
         left: 10
+      }),*/
+
+      /*itemVideo = Ti.UI.createWebView({
+        height: 150,
+        width: '100%',
+        top: 130,
+        left: 10
+      }),*/
+
+      itemVideoView = Ti.UI.createView({
+        width: '100%',
+        height: 150,
+        top: 130,
+        layout: 'vertical'
+      }),
+
+      itemVideoTitle = Ti.UI.createLabel({
+        color: 'white',
+        right: 5
+      }),
+
+      itemVideoAuthor = Ti.UI.createLabel({
+        color: 'white',
+        right: 5
+      }),
+
+      itemVideoDuration = Ti.UI.createLabel({
+        color: 'white',
+        right: 5
       }),
 
       wiperFluidPoi = Ti.UI.createView({
         backgroundImage: '/images/health_wiper_focus_poi_bg.png',
         height: 222,
-        width: 352,
-        right: '20%',
-        top: 408
+        width: 337,
+        left: 12,
+        top: 442
       }),
 
       wiperFluidPoiInner = Ti.UI.createView({
@@ -69,17 +104,63 @@ Views.health.show = function(healthItem) {
         width: 75,
         height: 25,
         backgroundColor: 'white',
-        top: 65,
-        right: '21%',
+        top: 117,
+        right: 33,
         zIndex: 100
-      });
+      }),
+      
+      searchTerms = {
+       "gas_level": 'how to pump gas',
+       "washer_fluid_level": 'how to change washer fluid',
+       "oil_pressure": 'how to change oil',
+       "transmission_fluid": 'how to change transmission fluid',
+       "tire_1_pressure": 'how to check air in tire',
+       "tire_2_pressure": 'how to check air in tire',
+       "tire_3_pressure": 'how to check air in tire',
+       "tire_4_pressure": 'how to check air in tire'
+      };
+
+  var getVid = function() {
+    var xhr = Ti.Network.createHTTPClient({
+          onload: function(e) {
+            var data = JSON.parse(this.responseText),
+                entry = data.feed.entry[0],
+                title = entry.title.$t,
+                author = entry.author[0].name.$t,
+                duration = entry.media$group.yt$duration.seconds,
+                minutes = Math.floor(duration/60),
+                seconds = duration % 60,
+                durationOutput = String(minutes) + ':' + String(seconds);
+               /* link = first(first(data.feed.entry).link).href;
+                itemVideo.url = link;*/
+                itemVideoTitle.text = title;
+                itemVideoAuthor.text = 'by ' + author; 
+                itemVideoDuration.text = durationOutput;
+          },
+          onerror: function(e) {
+          }
+        }),
+        
+        url = 'http://gdata.youtube.com/feeds/api/videos?q='+searchTerms[healthItem.input_name]+'&alt=json&max-results=1&start-index=1';
+        xhr.open("GET", url);
+        xhr.send();
+   };
+
+  getVid();
      
-  itemFocus.add(itemLabel);
+  itemVideoView.add(itemVideoTitle);
+  itemVideoView.add(itemVideoAuthor);
+  itemVideoView.add(itemVideoDuration);
+
+  itemFocusLabelView.add(itemLabel);
+  itemFocusLabelView.add(itemImage);
+
+  itemFocus.add(itemVideoView);
+  itemFocus.add(itemFocusLabelView);
   itemFocus.add(itemSeparator);
-  //itemFocus.add(itemImage);
   itemFocus.add(itemGuide);
   itemFocus.add(itemStatus);
-  itemFocus.add(itemVideo);
+  //itemFocus.add(itemVideo);
 
   itemLabel.addEventListener('click', function() {
     Layouts.application.contentRightView.clear();  

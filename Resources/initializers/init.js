@@ -19,7 +19,7 @@ require('controllers/application');
 require('controllers/health');*/
 
 Ti.include('/support/date.js');
-Ti.include("/lib/socket_page.js");
+Ti.include('/lib/socket_page.js');
 Ti.include('/lib/date_formatter.js');
 Ti.include('/support/functional.js');
 Ti.include('/support/more_functional.js');

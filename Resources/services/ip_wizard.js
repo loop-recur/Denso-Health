@@ -64,8 +64,8 @@ IpWizard = function(cb) {
 	
 	var doLogin = function() {
 		if(isAndroid) {
-			cb(ip.value);
 			win.close();
+			cb(ip.value);
 		} else {
 			win.close();
 			setTimeout(function(){

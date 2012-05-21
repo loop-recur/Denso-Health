@@ -4,7 +4,14 @@ var _createItemStatusView =  function(healthItem) {
         top: 50,
         left: 10,
         height: 75,
-        width: 200,
+        width: 200
+      }),
+
+      statusLabelView = Ti.UI.createView({
+        width: '100%',
+        height: 22,
+        top: 0,
+        layout: 'horizontal'
       }),
 
       statusLabel = Ti.UI.createLabel({
@@ -18,8 +25,8 @@ var _createItemStatusView =  function(healthItem) {
       statusImage = Ti.UI.createImageView({
         repeatCount: 1,
         duration: 20,
-        top: 10,
-        left: 155
+        top: 9,
+        left: 5
       }),
 
       currentLabel = Ti.UI.createLabel({
@@ -38,8 +45,9 @@ var _createItemStatusView =  function(healthItem) {
         font: {fontSize: 14}
       });
 
-  view.add(statusLabel);
-  view.add(statusImage);
+  statusLabelView.add(statusLabel);
+  statusLabelView.add(statusImage);
+  view.add(statusLabelView);
   view.add(currentLabel);
   view.add(availableLabel);
 

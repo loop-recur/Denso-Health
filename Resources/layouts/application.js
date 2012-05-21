@@ -3,12 +3,12 @@ Layouts.application = (function() {
 
   var _registerContentView = function() {
     Layouts.application.contentView = Ti.UI.createView({
-      width: '75%',
-      left: '25%'
+      width: 768,
+      left: 256
     });
 
     Layouts.application.contentLeftView = Ti.UI.createView({
-      width: '50%',
+      width: 384,
       left: 0,
       clear: function() {
         map(function(c) { Layouts.application.contentLeftView.remove(c) }, Layouts.application.contentLeftView.children);
@@ -16,7 +16,7 @@ Layouts.application = (function() {
     });
 
     Layouts.application.contentRightView = Ti.UI.createView({
-      width: '50%',
+      width: 384,
       right: 0,
       clear: function() {
         map(function(c) { Layouts.application.contentRightView.remove(c) }, Layouts.application.contentRightView.children);
@@ -43,14 +43,15 @@ Layouts.application = (function() {
           image: '/images/topbar_car_icon.png',
           height: 36,
           width: 36,
-          right: 160
+          left: 795
         }),
 
         time = Ti.UI.createLabel({
           text: DateFormatter.time(),
           font: {fontSize: 25},
           color: 'white',
-          top: 5
+          top: 5,
+          left: 464
         }),
 
         date = Ti.UI.createLabel({
@@ -66,7 +67,7 @@ Layouts.application = (function() {
           width: 20,
           height: 20,
           top: 10,
-          right: 210
+          left: 760
         }),
 
         emergencyButton = Ti.UI.createButton({
@@ -79,7 +80,8 @@ Layouts.application = (function() {
 
         caddyLogo = Ti.UI.createImageView({
           image: '/images/top_bar_cadillac_logo.png',
-          right: 0
+          width: 150,
+          left: 844
         });
 
     topBar.add(emergencyButton);
@@ -210,15 +212,16 @@ Layouts.application = (function() {
 
   var _buildSideBar = function() {
     var sideBar = Ti.UI.createView({
-          width: '25%',
+          width: 256,
           left: 0,
           backgroundImage: '/images/health_sidebar_repeat.png'
         }),
 
         underTheHood = Ti.UI.createImageView({
           image: '/images/sidebar_under_the_hood_heading.png',
-          left: 75,
+          left: 38,
           top: 125,
+          width: 188,
           zIndex: 15
         }),
 
@@ -299,8 +302,8 @@ Layouts.application = (function() {
   var _buildCarSummary = function() {
     var healthAutoBox = Ti.UI.createView({
           backgroundImage: '/images/health_auto_box.png',
-          top: 50,
-          left: '32%',
+          top: 64,
+          left: 286,
           width: 194,
           height: 59
         });
