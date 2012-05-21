@@ -68,7 +68,6 @@ var _buildHealthItemList = function(carListViewInner) {
 				var imgs = hi.stat.reportImages();
         statusLabel.text = hi.stat.report();
         statusImage.images = imgs;
-				log(imgs);
 				statusImage.addEventListener('stop', clearImages);
         statusImage.start();
 				if(!isAndroid) statusImage.addEventListener('stop', clearImages);
@@ -83,6 +82,7 @@ var _buildHealthItemList = function(carListViewInner) {
 
     var showItem = function() {
           Layouts.application.contentRightView.clear();
+					Layouts.application.contentRightView.clear();
           Ti.App.removeEventListener('car_stats_received', updateStats);
           Ti.App.fireEvent('onShow');
           Controllers.health.show(this.healthItem);  
