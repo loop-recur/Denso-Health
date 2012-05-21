@@ -1,4 +1,4 @@
-Ti.include('../../helpers/health/car_chassis_helper.js');
+Ti.include('/../helpers/health/car_chassis_helper.js');
 Views.health.carChassis = (function() {
   var self = {
         carView : Ti.UI.createView({
