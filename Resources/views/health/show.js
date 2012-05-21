@@ -1,4 +1,4 @@
-Ti.include('../../helpers/health/show_helper.js');
+Ti.include('/helpers/health/show_helper.js');
 
 Views.health.show = function(healthItem) {
 
