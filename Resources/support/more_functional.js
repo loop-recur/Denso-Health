@@ -199,14 +199,23 @@ isObj = function(obj) {
 }
 
 merge = function(x,y) {
+	var target = {};
+	for(property in x) target[property] = x[property];
+	
 	for(property in y) {
 		if(isObj(y[property])) {
-			merge(x[property], y[property]);
+			merge(target[property], y[property]);
 		} else {
-			x[property] = y[property];
+			if(target && y) target[property] = y[property];
 		}
 	}
-	return x;
+	return target;
+}
+
+safe_merge = function(x,y) {
+	x = x || {};
+	y = y || {};
+	return merge(x, y);
 }
 
 sortBy = defn(function(fun, xs) {

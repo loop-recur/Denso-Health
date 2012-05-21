@@ -27,19 +27,17 @@ var _buildHealthItemList = function(carListViewInner) {
             input_name: i.input_name
           }),
 
-          titleLabel = Ti.UI.createLabel({
+          titleLabel = UI.createLabel({
             text: i.title,
-            color: 'white',
             left: 20
           }),
 
-          statusLabel = Ti.UI.createLabel({
+          statusLabel = UI.createLabel({
             text: stat.report(),
-            color: 'white',
             right: 35 
           }),
 
-          statusImage = Ti.UI.createImageView({
+          statusImage = UI.createImageView({
             repeatCount: 1,
 						duration: 20,
             right: 5,
@@ -47,7 +45,7 @@ var _buildHealthItemList = function(carListViewInner) {
             width: 20
           }), 
           
-          alertImage = Ti.UI.createImageView({
+          alertImage = UI.createImageView({
             image: '',
             left: 0,
             height: 20,
@@ -83,6 +81,7 @@ var _buildHealthItemList = function(carListViewInner) {
 
     var showItem = function() {
           Layouts.application.contentRightView.clear();
+					Layouts.application.contentRightView.clear();
           Ti.App.removeEventListener('car_stats_received', updateStats);
           Ti.App.fireEvent('onShow');
           Controllers.health.show(this.healthItem);  

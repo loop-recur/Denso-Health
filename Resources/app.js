@@ -1,9 +1,9 @@
 var SocketIp;
+Ti.include('/theme_name.js');
 Ti.include('/initializers/init.js');
+CurrentTheme = Theme(ThemeName);
 
-
-var win = Titanium.UI.createWindow({  
-	backgroundImage: '/images/main_bg_tan_leather_ptrn_full.png',
+var win = UI.createWindow({
 	height:768,
 	width:1024,
 	top:0,
