@@ -1,6 +1,6 @@
 var _createItemStatusView =  function(healthItem) {
   var stat = healthItem.stat,
-      view = Ti.UI.createView({
+      view = UI.createImageView({
         top: 50,
         left: 10,
         height: 75,
@@ -15,7 +15,7 @@ var _createItemStatusView =  function(healthItem) {
         font: {fontSize: 14}
       }),
 
-      statusImage = Ti.UI.createImageView({
+      statusImage = UI.createImageView({
         image: stat.reportStaticImage(),
         top: 10,
         left: 155

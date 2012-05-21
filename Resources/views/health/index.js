@@ -1,11 +1,11 @@
 Ti.include('../../helpers/health/index_helper.js');
 Views.health.index = function() {
-  var carListView = Ti.UI.createView({
+  var carListView = UI.createImageView({
         width: 352,
         height: 517,
         right: '20%',
         top: 100,
-        backgroundImage: '/images/health_main_content_box.png'
+        image: '/images/health_main_content_box.png'
       }),
 
       carListViewInner = Ti.UI.createTableView({

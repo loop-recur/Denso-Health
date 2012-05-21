@@ -37,7 +37,7 @@ var _buildHealthItemList = function(carListViewInner) {
             right: 35 
           }),
 
-          statusImage = Ti.UI.createImageView({
+          statusImage = UI.createImageView({
             repeatCount: 1,
 						duration: 20,
             right: 5,
@@ -45,7 +45,7 @@ var _buildHealthItemList = function(carListViewInner) {
             width: 20
           }), 
           
-          alertImage = Ti.UI.createImageView({
+          alertImage = UI.createImageView({
             image: '',
             left: 0,
             height: 20,

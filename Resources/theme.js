@@ -7,7 +7,7 @@ Theme = function(name) {
 				color: "white"
 			},
 			label: {
-				color: "brown"
+				color: "#c5ab7d"
 			},
 			win: {
 				backgroundImage: "/images/main_bg.png"

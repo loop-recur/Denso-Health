@@ -2,10 +2,10 @@ Ti.include('../../helpers/health/show_helper.js');
 
 Views.health.show = function(healthItem) {
 
-    var itemFocus = Ti.UI.createView({
-        backgroundImage: '/images/health_wiper_focus_top_bg.png',
+    var itemFocus = UI.createImageView({
+        image: '/images/health_wiper_focus_top_bg.png',
         height: 278,
-       width: 352,
+       	width: 352,
         right: '20%',
         top: 100
       }),
@@ -17,7 +17,7 @@ Views.health.show = function(healthItem) {
         color: 'white'
       }),
 
-      itemSeparator = Ti.UI.createImageView({
+      itemSeparator = UI.createImageView({
         image: '/images/health_wiper_focus_separator.png',
         height: 10,
         width: 324,
@@ -25,7 +25,7 @@ Views.health.show = function(healthItem) {
         left: 10
       }),
      
-/*      itemImage = Ti.UI.createImageView({
+/*      itemImage = UI.createImageView({
         image: healthItem.image,
         top: 0,
         height: 30,
@@ -34,8 +34,8 @@ Views.health.show = function(healthItem) {
 
       itemStatus = _createItemStatusView(healthItem),
      
-      itemGuide = Ti.UI.createView({
-        backgroundImage: '/images/wiperfocus_view_in_guide_btn.png',
+      itemGuide = UI.createImageView({
+        image: '/images/wiperfocus_view_in_guide_btn.png',
         backgroundSelectedImage: '/images/wiperfocus_view_in_guide_btn_p.png',
         top: 60,
         left: 190,
@@ -43,7 +43,7 @@ Views.health.show = function(healthItem) {
         height: 55
       }),
 
-      itemVideo = Ti.UI.createImageView({
+      itemVideo = UI.createImageView({
         image: '/images/health_wiper_focus_top_section_all_bottom.png',
         height: 144,
         width: 324,
@@ -51,16 +51,16 @@ Views.health.show = function(healthItem) {
         left: 10
       }),
 
-      wiperFluidPoi = Ti.UI.createView({
-        backgroundImage: '/images/health_wiper_focus_poi_bg.png',
+      wiperFluidPoi = UI.createImageView({
+        image: '/images/health_wiper_focus_poi_bg.png',
         height: 222,
         width: 352,
         right: '20%',
         top: 408
       }),
 
-      wiperFluidPoiInner = Ti.UI.createView({
-        backgroundImage: '/images/health_wiper_focus_poi_section_all.png',
+      wiperFluidPoiInner = UI.createImageView({
+        image: '/images/health_wiper_focus_poi_section_all.png',
         height: 199,
         width: 324
       }),

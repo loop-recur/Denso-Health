@@ -2,12 +2,12 @@ Layouts.application = (function() {
   var win;
 
   var _registerContentView = function() {
-    Layouts.application.contentView = Ti.UI.createView({
+    Layouts.application.contentView = UI.createImageView({
       width: '75%',
       left: '25%'
     });
 
-    Layouts.application.contentLeftView = Ti.UI.createView({
+    Layouts.application.contentLeftView = UI.createImageView({
       width: '50%',
       left: 0,
       clear: function() {
@@ -15,7 +15,7 @@ Layouts.application = (function() {
       }
     });
 
-    Layouts.application.contentRightView = Ti.UI.createView({
+    Layouts.application.contentRightView = UI.createImageView({
       width: '50%',
       right: 0,
       clear: function() {
@@ -30,16 +30,16 @@ Layouts.application = (function() {
   };
 
   var _buildTopBar = function() {
-    var topBar = Ti.UI.createView({
+    var topBar = UI.createImageView({
           width: '100%',
           top: 0,
           left: 0,
-          backgroundImage: '/images/top_bar_bg.png',
+          image: '/images/top_bar_bg.png',
           height: 40,
           zIndex: 15
         }),
 
-        carIcon = Ti.UI.createImageView({
+        carIcon = UI.createImageView({
           image: '/images/topbar_car_icon.png',
           height: 36,
           width: 36,
@@ -75,7 +75,7 @@ Layouts.application = (function() {
           left: 5
         }),
 
-        caddyLogo = Ti.UI.createImageView({
+        caddyLogo = UI.createImageView({
           image: '/images/top_bar_cadillac_logo.png',
           right: 0
         });
@@ -90,15 +90,15 @@ Layouts.application = (function() {
   };
 
   var _buildMediaBar = function() {
-    var mediaPlayer = Ti.UI.createView({
+    var mediaPlayer = UI.createImageView({
           width: '100%',
           height: 80,
           bottom: 0,
-          backgroundImage: '/images/media_bar_bg.png',
+          image: '/images/media_bar_bg.png',
           zIndex: 15
         }),
 
-        coverArt = Ti.UI.createImageView({
+        coverArt = UI.createImageView({
           image: '/images/Media-Bar1-_31.png',
           left: 30
         }),
@@ -177,14 +177,14 @@ Layouts.application = (function() {
           height: 20
         }),
 
-        smallVolume = Ti.UI.createImageView({
+        smallVolume = UI.createImageView({
           image: '/images/media_bar_low_vol.png',
           height: 25,
           width: 25,
           right: 220
         }),
 
-        largeVolume = Ti.UI.createImageView({
+        largeVolume = UI.createImageView({
           image: '/images/media_bar_hi_vol.png',
           height: 25,
           width: 25,
@@ -207,20 +207,20 @@ Layouts.application = (function() {
   };
 
   var _buildSideBar = function() {
-    var sideBar = Ti.UI.createView({
+    var sideBar = UI.createView({
           width: '25%',
           left: 0,
           backgroundImage: '/images/health_sidebar_repeat.png'
         }),
 
-        underTheHood = Ti.UI.createImageView({
+        underTheHood = UI.createImageView({
           image: '/images/sidebar_under_the_hood_heading.png',
           left: 75,
           top: 125,
           zIndex: 15
         }),
 
-        sideBarBack = Ti.UI.createImageView({
+        sideBarBack = UI.createImageView({
           image: '/images/sidebar_backhome.png',
           top: 95,
           left: 10,
@@ -236,32 +236,32 @@ Layouts.application = (function() {
         }),
 
         sidePanelData = [
-                          {title: 'Health', icon: '../images/sidebar_health_icon.png', color: 'images/sidebar_yellow.png'},
-                          {title: 'Stats', icon: '../images/sidebar_stats_icon.png', color: 'images/sidebar_rouge.png'}, 
-                          {title: 'Scheduled Maintenance', icon: '../images/sidebar_maitnence_icon.png', color: '../images/sidebar_aqua.png'}, 
-                          {title: 'Guide', icon: '../images/sidebar_guide_icon.png', color: '../images/sidebar_tan.png'} 
+                          {title: 'Health', icon: '../images/sidebar_health_icon.png', color: 'images/sidebar_1.png'},
+                          {title: 'Stats', icon: '../images/sidebar_stats_icon.png', color: 'images/sidebar_2.png'}, 
+                          {title: 'Scheduled Maintenance', icon: '../images/sidebar_maitnence_icon.png', color: '../images/sidebar_3.png'}, 
+                          {title: 'Guide', icon: '../images/sidebar_guide_icon.png', color: '../images/sidebar_4.png'} 
                         ],
 
         rows = [];
 
     for (var i=0, len=sidePanelData.length; i < len; i++) {
       var data = sidePanelData[i],
-          row = Ti.UI.createTableViewRow({
+          row = UI.createTableViewRow({
             width: '100%',
             height: 80,
             backgroundImage: ((sidePanelData[i].title == "Health") ? '/images/health_background.png' : ''),
           }),
 
-          icon = Ti.UI.createView({
-            backgroundImage: data.icon,
+          icon = UI.createImageView({
+            image: data.icon,
             left: 35,
             height: 40,
             width: 40,
             zIndex: 16
           }),
 
-          color = Ti.UI.createView({
-            backgroundImage: data.color,
+          color = UI.createImageView({
+            image: data.color,
             left: 0,
             width: 19,
             zIndex: 16
@@ -294,15 +294,15 @@ Layouts.application = (function() {
   };
 
   var _buildCarSummary = function() {
-    var healthAutoBox = Ti.UI.createView({
-          backgroundImage: '/images/health_auto_box.png',
+    var healthAutoBox = UI.createImageView({
+          image: '/images/health_auto_box.png',
           top: 50,
           left: '32%',
           width: 194,
           height: 59
         });
 
-    var carPreview = Ti.UI.createImageView({
+    var carPreview = UI.createImageView({
           image: '/images/cadillac_xts_avatar.png',
           width: 40,
           height: 40,
