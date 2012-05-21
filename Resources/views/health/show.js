@@ -84,6 +84,7 @@ Views.health.show = function(healthItem) {
   itemLabel.addEventListener('click', function() {
     Layouts.application.contentRightView.clear();  
     Layouts.application.contentRightView.clear();  
+    Ti.App.fireEvent('onBack');
     Controllers.health.index();
   });
 
@@ -95,8 +96,10 @@ Views.health.show = function(healthItem) {
   backButton.addEventListener('click', function() {
     Layouts.application.contentRightView.clear();
     Layouts.application.contentRightView.clear();
+    Ti.App.fireEvent('onBack');
     Controllers.health.index();
   });
+
 
   wiperFluidPoi.add(wiperFluidPoiInner);
   Layouts.application.contentRightView.add(backButton);

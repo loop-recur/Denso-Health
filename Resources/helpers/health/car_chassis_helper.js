@@ -16,5 +16,22 @@ carChassisHelper = function(view) {
 		var level = healthItem.stat.reportChassisLevel();
     if(view[healthItem.input_name] && level) view[healthItem.input_name].image = _chassisImage(healthItem.input_name, level);
   };  
+
+  view.clear = function() {
+    for(var i = 0, len = chassisItems.length; i < len; i++) {
+      if(view[chassisItems[i]]) view[chassisItems[i]].image = null;
+    }
+  };
+
+  Ti.App.addEventListener('onShow', function() {
+        view.overAllHealth.visible = false;
+        view.clear();
+  });
+
+  Ti.App.addEventListener('onBack', function() {
+        view.overAllHealth.visible = true;
+        view.clear();
+  });
+
 };
 

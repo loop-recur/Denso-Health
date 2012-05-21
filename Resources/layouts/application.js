@@ -286,6 +286,7 @@ Layouts.application = (function() {
     sideBarBack.addEventListener('click', function() {
       Layouts.application.contentRightView.clear();  
       Layouts.application.contentRightView.clear();  
+      Ti.App.fireEvent('onBack');
       Controllers.health.index();
     });
 
