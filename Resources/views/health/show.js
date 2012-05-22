@@ -12,9 +12,7 @@ Views.health.show = function(healthItem) {
 
       itemFocusLabelView = Ti.UI.createView({
         layout: 'horizontal',
-       	width: 352,
-        right: '20%',
-        top: 100
+       	width: '100%',
       }),
         
       itemLabel = Ti.UI.createLabel({

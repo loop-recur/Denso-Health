@@ -30,11 +30,11 @@ Layouts.application = (function() {
   };
 
   var _buildTopBar = function() {
-    var topBar = UI.createImageView({
+    var topBar = UI.createView({
           width: '100%',
           top: 0,
           left: 0,
-          image: '/images/top_bar_bg.png',
+          backgroundImage: '/images/top_bar_bg.png',
           height: 40,
           zIndex: 15
         }),
@@ -49,9 +49,7 @@ Layouts.application = (function() {
         time = UI.createLabel({
           text: DateFormatter.time(),
           font: {fontSize: 25},
-          color: 'white',
-          top: 5,
-          left: 464
+          left: 464,
           top: 5
         }),
 
@@ -94,11 +92,11 @@ Layouts.application = (function() {
   };
 
   var _buildMediaBar = function() {
-    var mediaPlayer = UI.createImageView({
+    var mediaPlayer = UI.createView({
           width: '100%',
           height: 80,
           bottom: 0,
-          image: '/images/media_bar_bg.png',
+          backgroundImage: '/images/media_bar_bg.png',
           zIndex: 15
         }),
 
@@ -211,7 +209,7 @@ Layouts.application = (function() {
   };
 
   var _buildSideBar = function() {
-    var sideBar = Ti.UI.createView({
+    var sideBar = UI.createView({
           width: 256,
           left: 0,
           backgroundImage: '/images/health_sidebar_repeat.png'
@@ -241,32 +239,32 @@ Layouts.application = (function() {
         }),
 
         sidePanelData = [
-                          {title: 'Health', icon: '../images/sidebar_health_icon.png', color: 'images/sidebar_1.png'},
-                          {title: 'Stats', icon: '../images/sidebar_stats_icon.png', color: 'images/sidebar_2.png'}, 
-                          {title: 'Scheduled Maintenance', icon: '../images/sidebar_maitnence_icon.png', color: '../images/sidebar_3.png'}, 
-                          {title: 'Guide', icon: '../images/sidebar_guide_icon.png', color: '../images/sidebar_4.png'} 
+                          {title: 'Health', icon: '/images/sidebar_health_icon.png', color: '/images/sidebar_1.png'},
+                          {title: 'Stats', icon: '/images/sidebar_stats_icon.png', color: '/images/sidebar_2.png'}, 
+                          {title: 'Scheduled Maintenance', icon: '/images/sidebar_maitnence_icon.png', color: '/images/sidebar_3.png'}, 
+                          {title: 'Guide', icon: '/images/sidebar_guide_icon.png', color: '/images/sidebar_4.png'} 
                         ],
 
         rows = [];
 
     for (var i=0, len=sidePanelData.length; i < len; i++) {
       var data = sidePanelData[i],
-          row = UI.createTableViewRow({
+          row = Ti.UI.createTableViewRow({
             width: '100%',
             height: 80,
             backgroundImage: ((sidePanelData[i].title == "Health") ? '/images/health_background.png' : ''),
           }),
 
-          icon = UI.createImageView({
-            image: data.icon,
+          icon = UI.createView({
+            backgroundImage: data.icon,
             left: 35,
             height: 40,
             width: 40,
             zIndex: 16
           }),
 
-          color = UI.createImageView({
-            image: data.color,
+          color = UI.createView({
+            backgroundImage: data.color,
             left: 0,
             width: 19,
             zIndex: 16

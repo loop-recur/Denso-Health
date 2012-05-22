@@ -1,6 +1,6 @@
 var _createItemStatusView =  function(healthItem) {
   var stat = healthItem.stat,
-      view = UI.createImageView({
+      view = UI.createView({
         top: 50,
         left: 10,
         height: 75,

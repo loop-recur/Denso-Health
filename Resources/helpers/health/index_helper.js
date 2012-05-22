@@ -66,6 +66,7 @@ var _buildHealthItemList = function(carListViewInner) {
       row.refresh = function() {
 				statusImage.images = null;
 				var imgs = hi.stat.reportImages();
+        var last last(imgs)
         statusLabel.text = hi.stat.report();
         statusImage.images = imgs;
 				statusImage.addEventListener('stop', clearImages);
