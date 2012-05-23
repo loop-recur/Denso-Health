@@ -40,7 +40,9 @@ Stat.prototype = {
 
 FluidStat = function() {
   
-  this.measurementName = 'Volume (L): ';
+  this.measurementName = 'Volume: ';
+
+  this.measurementSuffix = 'L';
 
   this.availableMeasurement = 8;
 
@@ -159,6 +161,8 @@ MechStat = function() {
 
 AirStat = function() {
   this.measurementName = 'Pressure: ';
+
+  this.measurementSuffix = ' psi';
 
   this.availableMeasurement = 50;
 

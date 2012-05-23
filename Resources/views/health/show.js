@@ -19,7 +19,8 @@ Views.health.show = function(healthItem) {
         text: healthItem.title,
         top: 15,
         left: 10,
-        color: 'white'
+        color: 'white',
+        font: {fontSize: 18}
       }),
 
       itemImage = UI.createImageView({
@@ -47,13 +48,19 @@ Views.health.show = function(healthItem) {
 
       itemStatus = _createItemStatusView(healthItem),
      
-      itemGuide = UI.createImageView({
-        image: '/images/wiperfocus_view_in_guide_btn.png',
-        backgroundSelectedImage: '/images/wiperfocus_view_in_guide_btn_p.png',
+      itemGuide = UI.createView({
+        backgroundImage: '/images/wiperfocus_blankicon_view_in_guide_btn.png',
         top: 60,
         left: 175,
         width: 150,
         height: 55
+      }),
+
+      itemGuideLabel = Ti.UI.createLabel({
+        text: "View\nin Guide",
+        color: 'white',
+        font: {fontSize: 14},
+        top: 6
       }),
 
       /*itemVideo = UI.createImageView({
@@ -93,26 +100,62 @@ Views.health.show = function(healthItem) {
         right: 5
       }),
 
-      wiperFluidPoi = UI.createImageView({
-        image: '/images/health_wiper_focus_poi_bg.png',
+      wiperFluidPoi = UI.createView({
+        backgroundImage: '/images/health_wiper_focus_poi_bg.png',
         height: 222,
         width: 337,
         left: 12,
         top: 442
       }),
 
-      wiperFluidPoiInner = UI.createImageView({
-        image: '/images/health_wiper_focus_poi_section_all.png',
-        height: 199,
-        width: 324
+      findNearestBg = UI.createView({
+        backgroundImage: '/images/wiperfocus_blank_find_nearest_btn.png',
+        width: 310,
+        height: 46,
+        top: 30
       }),
-    
-      backButton = Ti.UI.createButton({
-        width: 75,
-        height: 25,
-        backgroundColor: 'white',
-        top: 117,
-        right: 33,
+
+      findNearest = UI.createImageView({
+        image: '/images/wiperfocus_find_nearest_btn.png',
+        width: 310,
+        height: 46
+      }),
+
+      findNearestLabel = Ti.UI.createLabel({
+        text: 'Nearby Service and Automotive:',
+        color: 'white',
+        font: {fontSize: 12},
+        top: 5,
+        left: 16
+      }),
+
+      findDealBg = UI.createView({
+        backgroundImage: '/images/wiperfocus_blank_deal_btn.png',
+        width: 310,
+        height: 75,
+        top: 116
+      }),
+
+      findDeal = UI.createImageView({
+        image: '/images/wiperfocus_deal_btn.png',
+        width: 310,
+        height: 75
+      }),
+
+      findDealLabel = Ti.UI.createLabel({
+        text: 'Deal!',
+        color: 'white',
+        font: {fontSize: 12},
+        top: 85,
+        left: 16
+      }),
+
+      backButton = UI.createImageView({
+        image: '/images/back_to_overview_btn.png',
+        width: 135,
+        height: 29,
+        top: 107,
+        right: 235,
         zIndex: 100
       }),
       
@@ -166,9 +209,17 @@ Views.health.show = function(healthItem) {
   itemFocus.add(itemVideoView);
   itemFocus.add(itemFocusLabelView);
   itemFocus.add(itemSeparator);
+  itemGuide.add(itemGuideLabel);
   itemFocus.add(itemGuide);
   itemFocus.add(itemStatus);
   //itemFocus.add(itemVideo);
+
+  findNearestBg.add(findNearest);
+  findDealBg.add(findDeal);
+  wiperFluidPoi.add(findNearestLabel);
+  wiperFluidPoi.add(findDealLabel);
+  wiperFluidPoi.add(findNearestBg);
+  wiperFluidPoi.add(findDealBg);
 
   itemLabel.addEventListener('click', function() {
     Layouts.application.contentRightView.clear();  
@@ -190,7 +241,6 @@ Views.health.show = function(healthItem) {
   });
 
 
-  wiperFluidPoi.add(wiperFluidPoiInner);
   Layouts.application.contentRightView.add(backButton);
   Layouts.application.contentRightView.add(wiperFluidPoi);
   Layouts.application.contentRightView.add(itemFocus);

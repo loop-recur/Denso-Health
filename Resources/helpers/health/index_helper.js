@@ -29,12 +29,14 @@ var _buildHealthItemList = function(carListViewInner) {
 
           titleLabel = UI.createLabel({
             text: i.title,
-            left: 20
+            left: 20,
+            font: {fontSize: 16}
           }),
 
           statusLabel = UI.createLabel({
             text: stat.report(),
-            right: 35 
+            right: 30,
+            font: {fontSize: 12}
           }),
 
           statusImage = UI.createImageView({
