@@ -39,13 +39,6 @@ Views.health.show = function(healthItem) {
         left: 10
       }),
      
-/*      itemImage = UI.createImageView({
-        image: healthItem.image,
-        top: 0,
-        height: 30,
-        width: 36
-      }),*/
-
       itemStatus = _createItemStatusView(healthItem),
      
       itemGuide = UI.createView({
@@ -62,42 +55,62 @@ Views.health.show = function(healthItem) {
         font: {fontSize: 14},
         top: 6
       }),
-
-      /*itemVideo = UI.createImageView({
-        image: '/images/health_wiper_focus_top_section_all_bottom.png',
-        height: 144,
-        width: 324,
-        top: 130,
-        left: 10
-      }),*/
-
-      /*itemVideo = Ti.UI.createWebView({
-        height: 150,
-        width: '100%',
-        top: 130,
-        left: 10
-      }),*/
+      
+      videoText = {
+                   "gas_level": {title: "Which Octane\nfor your Auto", author: 'AutoGuy996', duration: '02:56'},
+                   "washer_fluid_level": {title: "How to change\nwasher fluid", author: '76Stations', duration: '01:59'},
+                   "oil_pressure": {title: "How to Change\nYour Oil", author: 'JiffyLube', duration: '05:43'},
+                   "transmission_fluid": {title: "How to change\ntransmission fluid", author: 'CAautoDeals', duration: '03:44'},
+                   "tire_1_pressure": {title: "How to Check\nAir in your Tires", author: 'GoodYearGuy', duration: '02:34'},
+                   "tire_2_pressure": {title: "How to rotate\nyour tires", author: 'Gearhead999', duration: '04:23'},
+                   "tire_3_pressure": {title: "How to Check\nAir in your Tires", author: 'GoodYearGuy', duration: '02:34'},
+                   "tire_4_pressure": {title: "When to buy\nnew tires", author: 'Tirefan', duration: '01:01'},
+                   "front_driver_wheel_detail": {title: "How to check\nyour shocks", author: 'MinnAutoShop', duration: '02:45'},
+                   "front_passenger_wheel_detail": {title: "How to replace\nauto shocks", author: 'AutopartsDlr', duration: '06:34'},
+                   "rear_driver_wheel_detail": {title: "How to check\nyour shocks", author: 'MinnAutoShop', duration: '02:45'},
+                   "rear_passenger_wheel_detail": {title: "How to replace\nauto shocks", author: 'AutopartsDlr', duration: '06:34'}
+                 },
 
       itemVideoView = Ti.UI.createView({
-        width: '100%',
+        width: 352,
         height: 150,
-        top: 130,
-        layout: 'vertical'
+        top: 125
       }),
 
-      itemVideoTitle = Ti.UI.createLabel({
-        color: 'white',
-        right: 5
+      itemVideoSeparator = UI.createImageView({
+        image: '/images/health_wiper_focus_separator.png',
+        height: 10,
+        width: 324,
+        top: 1,
+        left: 10
       }),
 
-      itemVideoAuthor = Ti.UI.createLabel({
-        color: 'white',
-        right: 5
+      itemVideo = Ti.UI.createImageView({
+        image: '/images/video_thumbnail.png',
+        width: 171,
+        height: 95,
+        top: 25,
+        left: 20
       }),
 
-      itemVideoDuration = Ti.UI.createLabel({
-        color: 'white',
-        right: 5
+      itemVideoTitle = UI.createLabel({
+        text: videoText[healthItem.input_name].title,
+        left: 206,
+        top: 25
+      }),
+
+      itemVideoAuthor = UI.createLabel({
+        text: 'by ' + videoText[healthItem.input_name].author,
+        left: 206,
+        top: 75,
+        font: {fontSize: 10}
+      }),
+
+      itemVideoDuration = UI.createLabel({
+        text: videoText[healthItem.input_name].duration,
+        left: 206,
+        top: 95,
+        font: {fontSize: 10}
       }),
 
       wiperFluidPoi = UI.createView({
@@ -157,62 +170,23 @@ Views.health.show = function(healthItem) {
         top: 107,
         right: 235,
         zIndex: 100
-      }),
-      
-      searchTerms = {
-       "gas_level": 'how to pump gas',
-       "washer_fluid_level": 'how to change washer fluid',
-       "oil_pressure": 'how to change oil',
-       "transmission_fluid": 'how to change transmission fluid',
-       "tire_1_pressure": 'how to check air in tire',
-       "tire_2_pressure": 'how to check air in tire',
-       "tire_3_pressure": 'how to check air in tire',
-       "tire_4_pressure": 'how to check air in tire'
-      };
-
-  /*
-  var getVid = function() {
-    var xhr = Ti.Network.createHTTPClient({
-          onload: function(e) {
-            var data = JSON.parse(this.responseText),
-                entry = data.feed.entry[0],
-                title = entry.title.$t,
-                author = entry.author[0].name.$t,
-                duration = entry.media$group.yt$duration.seconds,
-                minutes = Math.floor(duration/60),
-                seconds = duration % 60,
-                durationOutput = String(minutes) + ':' + String(seconds);
-               // link = first(first(data.feed.entry).link).href;
-               // itemVideo.url = link;
-                itemVideoTitle.text = title;
-                itemVideoAuthor.text = 'by ' + author; 
-                itemVideoDuration.text = durationOutput;
-          },
-          onerror: function(e) {
-          }
-        }),
-        
-        url = 'http://gdata.youtube.com/feeds/api/videos?q='+searchTerms[healthItem.input_name]+'&alt=json&max-results=1&start-index=1';
-        xhr.open("GET", url);
-        xhr.send();
-   };
-
-  getVid();*/
+      });
      
-  itemVideoView.add(itemVideoTitle);
-  itemVideoView.add(itemVideoAuthor);
-  itemVideoView.add(itemVideoDuration);
-
   itemFocusLabelView.add(itemLabel);
   itemFocusLabelView.add(itemImage);
 
-  itemFocus.add(itemVideoView);
   itemFocus.add(itemFocusLabelView);
   itemFocus.add(itemSeparator);
   itemGuide.add(itemGuideLabel);
   itemFocus.add(itemGuide);
   itemFocus.add(itemStatus);
-  //itemFocus.add(itemVideo);
+
+  itemVideoView.add(itemVideoSeparator);
+  itemVideoView.add(itemVideo);
+  itemVideoView.add(itemVideoTitle);
+  itemVideoView.add(itemVideoAuthor);
+  itemVideoView.add(itemVideoDuration);
+  itemFocus.add(itemVideoView);
 
   findNearestBg.add(findNearest);
   findDealBg.add(findDeal);
@@ -240,9 +214,51 @@ Views.health.show = function(healthItem) {
     Controllers.health.index();
   });
 
-
   Layouts.application.contentRightView.add(backButton);
   Layouts.application.contentRightView.add(wiperFluidPoi);
   Layouts.application.contentRightView.add(itemFocus);
+
+ /* searchTerms = {
+   "gas_level": 'how to pump gas',
+   "washer_fluid_level": 'how to change washer fluid',
+   "oil_pressure": 'how to change oil',
+   "transmission_fluid": 'how to change transmission fluid',
+   "tire_1_pressure": 'how to check air in tire',
+   "tire_2_pressure": 'how to check air in tire',
+   "tire_3_pressure": 'how to check air in tire',
+   "tire_4_pressure": 'how to check air in tire',
+   "front_driver_wheel_detail": 'how to check auto shocks',
+   "front_passenger_wheel_detail": 'how to check auto shocks',
+   "rear_driver_wheel_detail": 'how to check auto shocks',
+   "rear_passenger_wheel_detail": 'how to check auto shocks',
+  };*/
+
+  /*(var getVids = function() {
+    var xhr = Ti.Network.createHTTPClient({
+          onload: function(e) {
+            var data = JSON.parse(this.responseText),
+                entry = data.feed.entry[0],
+                title = entry.title.$t,
+                author = entry.author[0].name.$t,
+                duration = entry.media$group.yt$duration.seconds,
+                minutes = Math.floor(duration/60),
+                seconds = duration % 60,
+                durationOutput = String(minutes) + ':' + String(seconds);
+               // link = first(first(data.feed.entry).link).href;
+               // itemVideo.url = link;
+                itemVideoTitle.text = title;
+                itemVideoAuthor.text = 'by ' + author; 
+                itemVideoDuration.text = durationOutput;
+          },
+          onerror: function(e) {
+          }
+        }),
+        
+        url = 'http://gdata.youtube.com/feeds/api/videos?q='+searchTerms[healthItem.input_name]+'&alt=json&max-results=1&start-index=1';
+        xhr.open("GET", url);
+        xhr.send();
+  };
+
+  getVids();*/
 };
 

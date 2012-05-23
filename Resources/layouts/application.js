@@ -221,7 +221,7 @@ Layouts.application = (function() {
     var sideBar = UI.createView({
           width: 256,
           left: 0,
-          backgroundImage: '/images/health_sidebar_repeat.png'
+          backgroundImage: '/images/sidebar_overlay.png'
         }),
 
         underTheHood = UI.createImageView({
@@ -243,8 +243,9 @@ Layouts.application = (function() {
 
         sideBarInner = Ti.UI.createTableView({
           top: 175,
-          width: '100%',
-          separatorColor: 'gray'
+          left: 0,
+          separatorColor: 'gray',
+          width: 238
         }),
 
         sidePanelData = [
