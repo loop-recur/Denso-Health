@@ -43,6 +43,7 @@ Views.health.show = function(healthItem) {
      
       itemGuide = UI.createView({
         backgroundImage: '/images/wiperfocus_blankicon_view_in_guide_btn.png',
+        backgroundSelectedImage: '/images/wiperfocus_blankicon_view_in_guide_btn_p.png',
         top: 60,
         left: 175,
         width: 150,
@@ -123,6 +124,7 @@ Views.health.show = function(healthItem) {
 
       findNearestBg = UI.createView({
         backgroundImage: '/images/wiperfocus_blank_find_nearest_btn.png',
+        backgroundSelectedImage: '/images/wiperfocus_blank_find_nearest_btn_p.png',
         width: 310,
         height: 46,
         top: 30
@@ -144,6 +146,7 @@ Views.health.show = function(healthItem) {
 
       findDealBg = UI.createView({
         backgroundImage: '/images/wiperfocus_blank_deal_btn.png',
+        backgroundSelectedImage: '/images/wiperfocus_blank_deal_btn_p.png',
         width: 310,
         height: 75,
         top: 116
@@ -163,8 +166,9 @@ Views.health.show = function(healthItem) {
         left: 16
       }),
 
-      backButton = UI.createImageView({
-        image: '/images/back_to_overview_btn.png',
+      backButton = UI.createView({
+        backgroundImage: '/images/back_to_overview_btn.png',
+        backgroundSelectedImage: '/images/back_to_overview_btn_p.png',
         width: 135,
         height: 29,
         top: 107,

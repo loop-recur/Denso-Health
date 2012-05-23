@@ -1,5 +1,5 @@
 carChassisHelper = function(view) {
-  var chassisItems = ['washer_fluid_level', 'coolant_fluid', 'oil_pressure', 'transmission_fluid', 'tire_1_pressure', 'tire_2_pressure', 'tire_3_pressure', 'tire_4_pressure', 'brake_fluid', 'power_steering_fluid', 'front_driver_wheel_detail', 'front_passenger_wheel_detail']; //, 'rear_driver_wheel_detail', 'rear_passenger_wheel_detail'];
+  var chassisItems = ['gas_level', 'washer_fluid_level', 'coolant_fluid', 'oil_pressure', 'transmission_fluid', 'tire_1_pressure', 'tire_2_pressure', 'tire_3_pressure', 'tire_4_pressure', 'brake_fluid', 'power_steering_fluid', 'front_driver_wheel_detail', 'front_passenger_wheel_detail', 'rear_driver_wheel_detail', 'rear_passenger_wheel_detail'];
 
 	var _chassisImage = function(itemName, level) {
 		return "/images/chassis/chassis_"+itemName+"_"+level+".png"
