@@ -126,14 +126,6 @@ var _buildHealthItemList = function(carListViewInner) {
 			    Views.health.carChassis.update(this.healthItem);
         };
 
-  var sortAttention = function(a,b) {
-    if(a.attention > b.attention)
-      return -1;
-    if(a.attention < b.attention)
-      return 1;
-    return 0;
-  };
-
   var updateStat = defn(function(data, row) {
     var healthItem = row.healthItem, 
         updatedData = filterByProperty('input_name', row.input_name, data);
@@ -146,12 +138,8 @@ var _buildHealthItemList = function(carListViewInner) {
   });
 
   var updateStats = function(e) {
-    var data = e.data,
-        children = carListViewInner.data[0].rows;
-		// children.sort(sortAttention);
-		// carListViewInner.setData(children);
+    var data = e.data, children = carListViewInner.data[0].rows;
     map(updateStat(data), children);
-
   };
 
   var rows = map(makeRow, carHealthItems);
