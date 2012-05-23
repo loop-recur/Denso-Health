@@ -14,7 +14,7 @@ Stat.prototype = {
 
   needsUpdate: function(n) { return n != this.level;},
 
-	getImageFun: compose(getMeterImage, halfAndRound),
+	getImageFun: getMeterImage,
 	
 	getStepFun: function() {
 		var self = this;
@@ -150,7 +150,7 @@ AirStat = function() {
     return (this.level >= 0 && this.level <= 50) ? ('/images/health_meter/health_meter'+this.level+'.png') : ''
   };
 
- 	this.getImageFun = getMeterImage;
+	this.getImageFun = compose(getMeterImage, halfAndRound);
 
   this._setAttention = function() { this.attention = (this.level <= 23) };
 	

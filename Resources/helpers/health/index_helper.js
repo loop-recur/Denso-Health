@@ -21,8 +21,8 @@ var _buildHealthItemList = function(carListViewInner) {
 
           row = Ti.UI.createTableViewRow({
             color: 'white',
-            width: '95%',
             healthItem: hi,
+						width: Ti.UI.FILL,
             attention: hi.stat.attention,
             input_name: i.input_name
           }),
@@ -38,24 +38,59 @@ var _buildHealthItemList = function(carListViewInner) {
           }),
 
           statusImage = UI.createImageView({
-            repeatCount: 1,
+						repeatCount: 1,
 						duration: 20,
+						image: '/images/health_meter/health_meter0.png',
             right: 5,
-            height: 20,
+            height: 10,
             width: 20
           }), 
           
           alertImage = UI.createImageView({
             image: '',
             left: 0,
-            height: 20,
-            width: 20
+            height: 19,
+            width: 22
           });
 
+			var setLastImage = function(images) {
+				if(isAndroid) {
+					var newStatusImage = UI.createImageView({
+						image: last(images),
+            right: 5,
+            height: 10,
+            width: 20
+          });
+					row.add(newStatusImage);
+					row.remove(statusImage);
+					statusImage = newStatusImage;
+				} else {
+					statusImage.image = last(images);
+				}
+				
+			}
+			
 			var clearImages = function() {
-				if(statusImage.images) statusImage.image = last(statusImage.images);
+				setLastImage(statusImage.images);
 				statusImage.removeEventListener('stop', clearImages);
-				if(isAndroid) statusImage.images = null;
+			}
+			
+			var startAnimation = function() {
+				statusImage.start();
+				statusImage.addEventListener('stop', clearImages);
+			}
+			
+			var resetImages = function(images) {
+				statusImage.images = images;
+			}
+			
+			var setReportText = function() {
+				statusLabel.text = hi.stat.report();
+			}
+			
+			var setAttention = function() {
+				row.attention = hi.stat.attention;
+				alertImage.image =  hi.stat.attention ? '/images/health_list_alert.png' : '';
 			}
 
       row.add(titleLabel);
@@ -64,18 +99,10 @@ var _buildHealthItemList = function(carListViewInner) {
       row.add(alertImage);
       row.addEventListener('click', showItem);
       row.refresh = function() {
-				statusImage.images = null;
-				var imgs = hi.stat.reportImages();
-        var last last(imgs)
-        statusLabel.text = hi.stat.report();
-        statusImage.images = imgs;
-				statusImage.addEventListener('stop', clearImages);
-        statusImage.start();
-				if(!isAndroid) statusImage.addEventListener('stop', clearImages);
-        this.attention = hi.stat.attention;
-        if(hi.stat.attention) {
-         alertImage.image = '/images/health_list_alert.png';
-        }
+				var images = hi.stat.reportImages();
+        setReportText();
+				setAttention();
+				isAndroid ? setLastImage(images) : compose(startAnimation, resetImages)(images);
       };
       return row;
     };
