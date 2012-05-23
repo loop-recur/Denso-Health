@@ -7,6 +7,7 @@ SocketPage = function(ip){
 				socket.on("car_stats_received", function(data){ \
 					Ti.App.fireEvent("car_stats_received", data); \
 				}); \
+        socket.emit("getCurrentData"); \
 			</script> \
 		</head>	\
 		<body style="background-color:green;">\

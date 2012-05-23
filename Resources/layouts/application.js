@@ -48,9 +48,9 @@ Layouts.application = (function() {
 
         time = UI.createLabel({
           text: DateFormatter.time(),
-          font: {fontSize: 25},
-          left: 464,
-          top: 5
+          font: {fontSize: 16},
+          left: 482,
+          top: 12
         }),
 
         date = UI.createLabel({
@@ -60,11 +60,10 @@ Layouts.application = (function() {
           left: 50
         }),
   
-        powerButton = Ti.UI.createButton({
-          backgroundImage: '/images/topbar_on_btn.png',
-          width: 20,
-          height: 20,
-          top: 10,
+        powerButton = UI.createImageView({
+          image: '/images/topbar_on_icon.png',
+          width: 36,
+          height: 36,
           left: 760
         }),
 
@@ -131,7 +130,7 @@ Layouts.application = (function() {
         mediaBack = Ti.UI.createButton({
           backgroundImage: '/images/media_bar_back.png',
           backgroundSelectedImage: '/images/media_bar_back_p.png',
-          left: '35%',
+          left: 385.5,
           width: 68,
           height: 68,
           top: 10
@@ -140,7 +139,7 @@ Layouts.application = (function() {
         mediaForward = Ti.UI.createButton({
           backgroundImage: '/images/media_bar_fwd.png',
           backgroundSelectedImage: '/images/media_bar_fwd_p.png',
-          left: '54%',
+          left: 570.5,
           zIndex: 10,
           width: 68,
           height: 68,
@@ -150,7 +149,7 @@ Layouts.application = (function() {
         mediaPlay = Ti.UI.createButton({
           backgroundImage: '/images/media_bar_play.png',
           backgroundSelectedImage: '/images/media_bar_play_p.png',
-          left: '44%',
+          left: 468.5,
           width: 87,
           height: 87,
           top: 5
@@ -159,7 +158,7 @@ Layouts.application = (function() {
         mediaRepeat = Ti.UI.createButton({
           backgroundImage: '/images/media_bar_repeat.png',
           backgroundSelectedImage: '/images/media_bar_repeat_p.png',
-          left: '20%',
+          left: 255,
           width: 44,
           height: 40
         }),
@@ -167,30 +166,36 @@ Layouts.application = (function() {
         mediaShuffle = Ti.UI.createButton({
           backgroundImage: '/images/media_bar_shuffle.png',
           backgroundSelectedImage: '/images/media_bar_shuffle_p.png',
-          left: '25%',
+          left: 305,
           width: 44,
           height: 40,
           enabled: true
         }),
 
+        sliderView = Ti.UI.createView({
+          width: 345,
+          height: 25,
+          left: 654
+        }),
+
         volumeSlider = Ti.UI.createSlider({
-          right: 25,
-          width: 200,
-          height: 20
+          width: 275,
+          height: 20,
+          left: 35
         }),
 
         smallVolume = UI.createImageView({
           image: '/images/media_bar_low_vol.png',
           height: 25,
           width: 25,
-          right: 220
+          left: 1
         }),
 
         largeVolume = UI.createImageView({
           image: '/images/media_bar_hi_vol.png',
           height: 25,
           width: 25,
-          right: 2
+          left: 321
         });
 
     mediaPlayer.add(smallVolume);
@@ -204,7 +209,11 @@ Layouts.application = (function() {
     mediaPlayer.add(mediaPlay);
     mediaPlayer.add(mediaRepeat);
     mediaPlayer.add(mediaShuffle);
-    mediaPlayer.add(volumeSlider);
+
+    sliderView.add(smallVolume);
+    sliderView.add(volumeSlider);
+    sliderView.add(largeVolume);
+    mediaPlayer.add(sliderView);
     win.add(mediaPlayer);
   };
 
@@ -241,7 +250,7 @@ Layouts.application = (function() {
         sidePanelData = [
                           {title: 'Health', icon: '/images/sidebar_health_icon.png', color: '/images/sidebar_1.png'},
                           {title: 'Stats', icon: '/images/sidebar_stats_icon.png', color: '/images/sidebar_2.png'}, 
-                          {title: 'Scheduled Maintenance', icon: '/images/sidebar_maitnence_icon.png', color: '/images/sidebar_3.png'}, 
+                          {title: "Scheduled\nMaintenance", icon: '/images/sidebar_maitnence_icon.png', color: '/images/sidebar_3.png'}, 
                           {title: 'Guide', icon: '/images/sidebar_guide_icon.png', color: '/images/sidebar_4.png'} 
                         ],
 

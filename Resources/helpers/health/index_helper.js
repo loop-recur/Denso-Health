@@ -7,11 +7,11 @@ var _buildHealthItemList = function(carListViewInner) {
                         {title:"Front Driver Tire", type:"AirStat", input_name: "tire_1_pressure"},
                         {title:"Front Passenger Tire", type:"AirStat", input_name: "tire_2_pressure"},
                         {title:"Rear Driver Tire", type:"AirStat", input_name: "tire_3_pressure"},
-                        {title:"Rear Passenger Tire", type:"AirStat", input_name: "tire_4_pressure"}
-                        /*{title:"Front Driver Shock", type:"MechStat", input_name: ""},
-                        {title:"Front Passenger Shock", type:"MechStat", input_name: ""},
-                        {title:"Rear Driver Shock", type:"MechStat", input_name: ""},
-                        {title:"Rear Passenger Shock", type:"MechStat", input_name: ""}*/
+                        {title:"Rear Passenger Tire", type:"AirStat", input_name: "tire_4_pressure"},
+                        {title:"Front Driver Shock", type:"MechStat", input_name: "front_driver_wheel_detail"},
+                        {title:"Front Passenger Shock", type:"MechStat", input_name: "front_passenger_wheel_detail"},
+                        {title:"Rear Driver Shock", type:"MechStat", input_name: "rear_driver_wheel_detail"},
+                        {title:"Rear Passenger Shock", type:"MechStat", input_name: "rear_passenger_wheel_detail"}
                        ];
 
     var makeRow = function(i) {
@@ -29,12 +29,14 @@ var _buildHealthItemList = function(carListViewInner) {
 
           titleLabel = UI.createLabel({
             text: i.title,
-            left: 20
+            left: 20,
+            font: {fontSize: 16}
           }),
 
           statusLabel = UI.createLabel({
-            text: stat.report(),
-            right: 35 
+            text: String(stat.report()),
+            right: 30,
+            font: {fontSize: 12}
           }),
 
           statusImage = UI.createImageView({
@@ -92,6 +94,15 @@ var _buildHealthItemList = function(carListViewInner) {
 				row.attention = hi.stat.attention;
 				alertImage.image =  hi.stat.attention ? '/images/health_list_alert.png' : '';
 			}
+			
+			var animateNumbers = function() {
+				var statuses = hi.stat.reportStatuses();
+        var i = 0, len = statuses.length;
+        setInterval(function() {
+          if (i < len) { statusLabel.text = statuses[i]; }
+          i++;
+        }, 20);
+			}
 
       row.add(titleLabel);
       row.add(statusLabel);
@@ -102,8 +113,10 @@ var _buildHealthItemList = function(carListViewInner) {
 				var images = hi.stat.reportImages();
         setReportText();
 				setAttention();
+				animateNumbers();
 				isAndroid ? setLastImage(images) : compose(startAnimation, resetImages)(images);
       };
+
       return row;
     };
 
@@ -113,6 +126,7 @@ var _buildHealthItemList = function(carListViewInner) {
           Ti.App.removeEventListener('car_stats_received', updateStats);
           Ti.App.fireEvent('onShow');
           Controllers.health.show(this.healthItem);  
+			    Views.health.carChassis.update(this.healthItem);
         };
 
   var sortAttention = function(a,b) {

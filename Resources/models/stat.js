@@ -37,10 +37,11 @@ Stat.prototype = {
 
 };
 
-
 FluidStat = function() {
   
-  this.measurementName = 'Volume (L): ';
+  this.measurementName = 'Volume: ';
+
+  this.measurementSuffix = 'L';
 
   this.availableMeasurement = 8;
 
@@ -57,6 +58,37 @@ FluidStat = function() {
               good: 'Good', 
               veryGood: 'Very Good'
             };
+
+  this.reportStatuses = function() {
+    var msg_array = [], 
+        greaterThan = (this.oldLevel > this.level);
+
+    if (greaterThan) {
+      while (this.oldLevel >= this.level) {
+        var msg = this.messages[this.reportStatusLevel()];
+            msg += ' ('+this.oldLevel+'%)';
+            msg_array.push(msg);
+            this.oldLevel -= 1;
+      }
+    } else {
+      while (this.oldLevel <= this.level) {
+        var msg = this.messages[this.reportStatusLevel()];
+            msg += ' ('+this.oldLevel+'%)';
+            msg_array.push(msg);
+            this.oldLevel += 1;
+      }
+    }
+
+    return msg_array;
+  };
+
+  this.reportStatusLevel = function() {
+      for (t in this.thresholds) {
+        if(this.thresholds.hasOwnProperty(t)  && +this.oldLevel <= t) {
+          return this.thresholds[t];
+        }
+      }
+  };
 
   this.report = function() {
             var msg = this.messages[this._reportThreshold()];
@@ -87,15 +119,18 @@ FluidStat = function() {
 };
 
 MechStat = function() {
-  this.thresholds = { 50: 'check', 100: 'good' };
+  this.thresholds = { 40: 'check', 75: 'ok', 100: 'good' };
 
-  this.messages = { check: 'Check', good: 'Good' };
+  this.messages = { check: 'Check', ok: 'OK', good: 'Good' };
+
+  this.reportStatuses = function() {
+    return [this.messages[this._reportThreshold()]];
+  };
 
   this.report = function() {
             var msg = this.messages[this._reportThreshold()];
             this._setAttention(msg);
-
-            return (this.level) ? msg : '';
+            return msg;
   };
 
   this._reportThreshold = function() {
@@ -106,28 +141,38 @@ MechStat = function() {
                       }
                     };
 
+	this.levelIsHigh = function() { return (this.level > 75 && this.level <= 100); };
+	this.levelIsMedium = function() { return (this.level > 40 && this.level <= 75); };
+	this.levelIsLow = function() { return (this.level <= 40); };
+
   this._setAttention = function(msg) { this.attention = (msg == "Check") };
 
   this.reportStaticImage = function() {
     if(this.messages[this._reportThreshold()] === "Check") {
-      return ['/images/health_list_red.png'];
+      return '/images/health_list_red.png';
+    } else if(this.messages[this._reportThreshold()] === "OK") {
+      return '/images/health_list_yellow.png';
     } else {
-      return ['/images/health_list_green.png'];
+      return '/images/health_list_green.png';
     }
 
   };
 
   this.reportImages = function() {
     if(this.messages[this._reportThreshold()] === "Check") {
-      return ['/images/health_list_red.png'];
+      return ['/images/health_list_red.png', '/images/health_list_red.png'];
+    } else if(this.messages[this._reportThreshold()] === "OK") {
+      return ['/images/health_list_yellow.png', '/images/health_list_yellow.png'];
     } else {
-      return ['/images/health_list_green.png'];
+      return ['/images/health_list_green.png', '/images/health_list_green.png'];
     }
   };
 };
 
 AirStat = function() {
   this.measurementName = 'Pressure: ';
+
+  this.measurementSuffix = ' psi';
 
   this.availableMeasurement = 50;
 
@@ -151,6 +196,27 @@ AirStat = function() {
   };
 
 	this.getImageFun = compose(getMeterImage, halfAndRound);
+
+  this.reportStatuses = function() {
+    var msg_array = [], 
+        greaterThan = (this.oldLevel > this.level);
+
+    if (greaterThan) {
+      while (this.oldLevel >= this.level) {
+        var msg = ' '+this.oldLevel+' psi';
+            msg_array.push(msg);
+            this.oldLevel -= 1;
+      }
+    } else {
+      while (this.oldLevel <= this.level) {
+        var msg = ' '+this.oldLevel+' psi';
+            msg_array.push(msg);
+            this.oldLevel += 1;
+      }
+    }
+
+    return msg_array;
+  };
 
   this._setAttention = function() { this.attention = (this.level <= 23) };
 	

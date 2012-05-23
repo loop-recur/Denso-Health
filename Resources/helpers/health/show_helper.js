@@ -19,10 +19,11 @@ var _createItemStatusView =  function(healthItem) {
         top: 5,
         left: 5,
         color: 'white',
-        font: {fontSize: 14}
+        font: {fontSize: 12}
       }),
 
       statusImage = UI.createImageView({
+        image: stat.reportStaticImage(),
         repeatCount: 1,
         duration: 20,
         top: 9,
@@ -30,19 +31,19 @@ var _createItemStatusView =  function(healthItem) {
       }),
 
       currentLabel = Ti.UI.createLabel({
-        text: (stat.measurementName) ? ('Current '+stat.measurementName+stat.currentMeasurement()) : '',
+        text: (stat.measurementName && stat.measurementSuffix) ? ('Current '+stat.measurementName+stat.currentMeasurement()+stat.measurementSuffix) : '',
         top: 25,
         left: 5,
         color: 'white',
-        font: {fontSize: 14}
+        font: {fontSize: 12}
       }),
 
       availableLabel = Ti.UI.createLabel({
-        text: (stat.measurementName) ? ('Available '+stat.measurementName+stat.availableMeasurement) : '',
+        text: (stat.measurementName) ? ('Available '+stat.measurementName+stat.availableMeasurement+stat.measurementSuffix) : '',
         top: 45,
         left: 5,
         color: 'white',
-        font: {fontSize: 14}
+        font: {fontSize: 12}
       });
 
   statusLabelView.add(statusLabel);
@@ -66,7 +67,7 @@ var _createItemStatusView =  function(healthItem) {
       statusImage.images = null;
       var imgs = stat.reportImages();
       statusLabel.text = "Status: " + stat.report();
-      currentLabel.text = (stat.measurementName) ? ('Current '+stat.measurementName+stat.currentMeasurement()) : '';
+      currentLabel.text = (stat.measurementName) ? ('Current '+stat.measurementName+stat.currentMeasurement()+stat.measurementSuffix) : '';
       statusImage.images = imgs;
       statusImage.addEventListener('stop', clearImages);
       statusImage.start();
