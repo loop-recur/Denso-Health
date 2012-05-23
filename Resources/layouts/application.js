@@ -75,18 +75,18 @@ Layouts.application = (function() {
           left: 5
         }),
 
-        caddyLogo = UI.createImageView({
-          image: '/images/top_bar_cadillac_logo.png',
+        logo = UI.createImageView({
+          image: '/images/top_bar_logo.png',
           width: 150,
           left: 844
         });
-
+		
     topBar.add(emergencyButton);
     topBar.add(powerButton);
     topBar.add(carIcon);
     topBar.add(time);
     topBar.add(date);
-    topBar.add(caddyLogo);
+    if(ThemeName == "cadillac") topBar.add(logo);
     win.add(topBar);
   };
 
