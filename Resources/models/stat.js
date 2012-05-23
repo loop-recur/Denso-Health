@@ -58,6 +58,37 @@ FluidStat = function() {
               veryGood: 'Very Good'
             };
 
+  this.reportStatuses = function() {
+    var msg_array = [], 
+        greaterThan = (this.oldLevel > this.level);
+
+    if (greaterThan) {
+      while (this.oldLevel >= this.level) {
+        var msg = this.messages[this.reportStatusLevel()];
+            msg += ' ('+this.oldLevel+'%)';
+            msg_array.push(msg);
+            this.oldLevel -= 1;
+      }
+    } else {
+      while (this.oldLevel <= this.level) {
+        var msg = this.messages[this.reportStatusLevel()];
+            msg += ' ('+this.oldLevel+'%)';
+            msg_array.push(msg);
+            this.oldLevel += 1;
+      }
+    }
+
+    return msg_array;
+  };
+
+  this.reportStatusLevel = function() {
+      for (t in this.thresholds) {
+        if(this.thresholds.hasOwnProperty(t)  && +this.oldLevel <= t) {
+          return this.thresholds[t];
+        }
+      }
+  };
+
   this.report = function() {
             var msg = this.messages[this._reportThreshold()];
 
@@ -148,6 +179,27 @@ AirStat = function() {
 
   this.reportStaticImage = function() {
     return (this.level >= 0 && this.level <= 50) ? ('/images/health_meter/health_meter'+this.level+'.png') : ''
+  };
+
+  this.reportStatuses = function() {
+    var msg_array = [], 
+        greaterThan = (this.oldLevel > this.level);
+
+    if (greaterThan) {
+      while (this.oldLevel >= this.level) {
+        var msg = ' '+this.oldLevel+' psi';
+            msg_array.push(msg);
+            this.oldLevel -= 1;
+      }
+    } else {
+      while (this.oldLevel <= this.level) {
+        var msg = ' '+this.oldLevel+' psi';
+            msg_array.push(msg);
+            this.oldLevel += 1;
+      }
+    }
+
+    return msg_array;
   };
 
  	this.getImageFun = getMeterImage;

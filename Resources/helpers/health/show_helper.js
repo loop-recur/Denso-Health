@@ -23,6 +23,7 @@ var _createItemStatusView =  function(healthItem) {
       }),
 
       statusImage = UI.createImageView({
+        image: stat.reportStaticImage(),
         repeatCount: 1,
         duration: 20,
         top: 9,

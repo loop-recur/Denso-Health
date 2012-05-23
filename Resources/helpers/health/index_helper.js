@@ -67,6 +67,14 @@ var _buildHealthItemList = function(carListViewInner) {
 				statusImage.images = null;
 				var imgs = hi.stat.reportImages();
         statusLabel.text = hi.stat.report();
+        var statuses = hi.stat.reportStatuses();
+        var i = 0, len = statuses.length;
+        setInterval(function() {
+          if ( i < len) {
+            statusLabel.text = statuses[i];
+           }
+           i++;
+            }, 20);
         statusImage.images = imgs;
 				statusImage.addEventListener('stop', clearImages);
         statusImage.start();
@@ -85,6 +93,7 @@ var _buildHealthItemList = function(carListViewInner) {
           Ti.App.removeEventListener('car_stats_received', updateStats);
           Ti.App.fireEvent('onShow');
           Controllers.health.show(this.healthItem);  
+			    Views.health.carChassis.update(this.healthItem);
         };
 
   var sortAttention = function(a,b) {
