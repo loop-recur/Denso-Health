@@ -127,6 +127,7 @@ Views.health.show = function(healthItem) {
        "tire_4_pressure": 'how to check air in tire'
       };
 
+  /*
   var getVid = function() {
     var xhr = Ti.Network.createHTTPClient({
           onload: function(e) {
@@ -138,8 +139,8 @@ Views.health.show = function(healthItem) {
                 minutes = Math.floor(duration/60),
                 seconds = duration % 60,
                 durationOutput = String(minutes) + ':' + String(seconds);
-               /* link = first(first(data.feed.entry).link).href;
-                itemVideo.url = link;*/
+               // link = first(first(data.feed.entry).link).href;
+               // itemVideo.url = link;
                 itemVideoTitle.text = title;
                 itemVideoAuthor.text = 'by ' + author; 
                 itemVideoDuration.text = durationOutput;
@@ -153,7 +154,7 @@ Views.health.show = function(healthItem) {
         xhr.send();
    };
 
-  getVid();
+  getVid();*/
      
   itemVideoView.add(itemVideoTitle);
   itemVideoView.add(itemVideoAuthor);

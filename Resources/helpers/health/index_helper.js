@@ -71,10 +71,10 @@ var _buildHealthItemList = function(carListViewInner) {
 				statusImage.addEventListener('stop', clearImages);
         statusImage.start();
 				if(!isAndroid) statusImage.addEventListener('stop', clearImages);
-        this.attention = hi.stat.attention;
-        if(hi.stat.attention) {
-         alertImage.image = '/images/health_list_alert.png';
-        }
+        //this.attention = hi.stat.attention;
+        //if(hi.stat.attention) {
+        // alertImage.image = '/images/health_list_alert.png';
+        //}
       };
       return row;
     };
