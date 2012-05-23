@@ -7,11 +7,11 @@ var _buildHealthItemList = function(carListViewInner) {
                         {title:"Front Driver Tire", type:"AirStat", input_name: "tire_1_pressure"},
                         {title:"Front Passenger Tire", type:"AirStat", input_name: "tire_2_pressure"},
                         {title:"Rear Driver Tire", type:"AirStat", input_name: "tire_3_pressure"},
-                        {title:"Rear Passenger Tire", type:"AirStat", input_name: "tire_4_pressure"}
-                        /*{title:"Front Driver Shock", type:"MechStat", input_name: ""},
-                        {title:"Front Passenger Shock", type:"MechStat", input_name: ""},
-                        {title:"Rear Driver Shock", type:"MechStat", input_name: ""},
-                        {title:"Rear Passenger Shock", type:"MechStat", input_name: ""}*/
+                        {title:"Rear Passenger Tire", type:"AirStat", input_name: "tire_4_pressure"},
+                        {title:"Front Driver Shock", type:"MechStat", input_name: "front_driver_wheel_detail"},
+                        {title:"Front Passenger Shock", type:"MechStat", input_name: "front_passenger_wheel_detail"},
+                        {title:"Rear Driver Shock", type:"MechStat", input_name: "rear_driver_wheel_detail"},
+                        {title:"Rear Passenger Shock", type:"MechStat", input_name: "rear_passenger_wheel_detail"}
                        ];
 
     var makeRow = function(i) {
@@ -34,7 +34,7 @@ var _buildHealthItemList = function(carListViewInner) {
           }),
 
           statusLabel = UI.createLabel({
-            text: stat.report(),
+            text: String(stat.report()),
             right: 30,
             font: {fontSize: 12}
           }),
