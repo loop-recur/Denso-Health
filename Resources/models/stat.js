@@ -14,7 +14,7 @@ Stat.prototype = {
 
   needsUpdate: function(n) { return n != this.level;},
 
-	getImageFun: getMeterImage,
+	getImageFun: compose(getMeterImage, halfAndRound),
 	
 	getStepFun: function() {
 		var self = this;
@@ -26,7 +26,7 @@ Stat.prototype = {
 	
 	reportImages: function() {
                         if(this.level < 0 && this.level > 100) return [];
-												return unfoldr(this.getStepFun(), this.oldLevel);
+												return uniq(unfoldr(this.getStepFun(), this.oldLevel));
                       },
 
   reportChassisLevel: function() {
@@ -195,7 +195,7 @@ AirStat = function() {
     return (this.level >= 0 && this.level <= 50) ? ('/images/health_meter/health_meter'+this.level+'.png') : ''
   };
 
-	this.getImageFun = compose(getMeterImage, halfAndRound);
+	this.getImageFun = getMeterImage;
 
   this.reportStatuses = function() {
     var msg_array = [], 
