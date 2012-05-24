@@ -174,8 +174,33 @@ Views.health.show = function(healthItem) {
         top: 107,
         right: 235,
         zIndex: 100
-      });
+      }),
+
+      guideWin = UI.createWindow({
+          height: 520,
+          width: 520,
+          modal: true,
+          backgroundImage: '/images/guide_popup_bg.png'
+        }),
+        
+        okayButton = UI.createView({
+          backgroundImage: '/images/guide_popup_okay_btn.png',
+          backgroundSelectedImage: '/images/guid_popup_okay_btn_p.png',
+          width: 272,
+          height: 42,
+          top: 460
+        }),
+        
+        guideContent = UI.createImageView({
+          image: '/images/guide_popup_content.png',
+          width: 500,
+          height: 436,
+          top: 15
+        });
      
+  guideWin.add(okayButton);
+  guideWin.add(guideContent);
+
   itemFocusLabelView.add(itemLabel);
   itemFocusLabelView.add(itemImage);
 
@@ -206,10 +231,8 @@ Views.health.show = function(healthItem) {
     Controllers.health.index();
   });
 
-  itemGuide.addEventListener('click', function() {
-    Ti.UI.createAlertDialog({
-      message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus placerat lorem id diam molestie non tincidunt nulla blandit. Fusce et dui ante. Sed velit eros, adipiscing vel viverra eget, tincidunt ut metus. Sed in fringilla libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris blandit aliquam ante sed laoreet. Duis quis urna lacus. Phasellus vehicula suscipit commodo. Donec rutrum, urna sed egestas rutrum, nunc diam tempus felis, at rutrum sem urna ac metus. Nunc pretium cursus nulla in luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris quis erat mi. Aliquam erat volutpat. Sed vel diam vel ipsum aliquet ullamcorper ut semper libero."}).show();
-  });
+  itemGuide.addEventListener('click', function() { guideWin.open(); });
+  okayButton.addEventListener('click', function() { guideWin.close() });
        
   backButton.addEventListener('click', function() {
     Layouts.application.contentRightView.clear();

@@ -248,7 +248,6 @@ Layouts.application = (function() {
         sideBarInner = Ti.UI.createTableView({
           top: 175,
           left: 0,
-          separatorColor: 'gray',
           width: 238
         }),
 
