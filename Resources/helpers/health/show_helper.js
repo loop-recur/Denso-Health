@@ -27,7 +27,9 @@ var _createItemStatusView =  function(healthItem) {
         repeatCount: 1,
         duration: 20,
         top: 9,
-        left: 5
+        left: 5,
+				width: stat.image_size.width,
+				height: stat.image_size.height
       }),
 
       currentLabel = Ti.UI.createLabel({
@@ -48,15 +50,34 @@ var _createItemStatusView =  function(healthItem) {
 
   statusLabelView.add(statusLabel);
   statusLabelView.add(statusImage);
-  view.add(statusLabelView);
   view.add(currentLabel);
   view.add(availableLabel);
+  view.add(statusLabelView);
 
   var clearImages = function() {
     if(statusImage.images) statusImage.image = last(statusImage.images);
     statusImage.removeEventListener('stop', clearImages);
-    if(isAndroid) statusImage.images = null;
   }
+
+	var changeImage = function(images) {
+		var newStatusImage = UI.createImageView({
+			image: last(images),
+      top: 9,
+      left: 5,
+			width: statusImage.width,
+			height: statusImage.height
+    });
+		
+		statusLabelView.remove(statusImage);
+		statusLabelView.add(newStatusImage);
+		statusImage = newStatusImage;
+	}
+
+  var animateImage = function(images) {
+		statusImage.images = images;
+    statusImage.start();
+		statusImage.addEventListener('stop', clearImages);
+	}
 
   var updateStat = function(e) {
     var updatedData = filterByProperty('input_name', healthItem.input_name, e.data);
@@ -68,14 +89,14 @@ var _createItemStatusView =  function(healthItem) {
       var imgs = stat.reportImages();
       statusLabel.text = "Status: " + stat.report();
       currentLabel.text = (stat.measurementName) ? ('Current '+stat.measurementName+stat.currentMeasurement()+stat.measurementSuffix) : '';
-      statusImage.images = imgs;
-      statusImage.addEventListener('stop', clearImages);
-      statusImage.start();
-      if(!isAndroid) statusImage.addEventListener('stop', clearImages);
+			isAndroid ? changeImage(imgs) : animateImage(imgs);
     }
   };
 
   Ti.App.addEventListener('car_stats_received', updateStat);
+	Ti.App.addEventListener('onBack', function() {
+		Ti.App.removeEventListener('car_stats_received', updateStat);
+	});
 
   return view;
 };

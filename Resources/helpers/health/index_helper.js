@@ -22,7 +22,7 @@ var _buildHealthItemList = function(carListViewInner) {
           row = Ti.UI.createTableViewRow({
             color: 'white',
             healthItem: hi,
-						width: "95%",
+						width: "100%",
             attention: hi.stat.attention,
             input_name: i.input_name
           }),
@@ -49,7 +49,7 @@ var _buildHealthItemList = function(carListViewInner) {
           }), 
           
           alertImage = UI.createImageView({
-            image: '',
+            image: '/images/health_list_alert.png',
             left: 0,
             height: 19,
             width: 22
@@ -60,9 +60,10 @@ var _buildHealthItemList = function(carListViewInner) {
 					var newStatusImage = UI.createImageView({
 						image: last(images),
             right: 5,
-						width: stat.image_size.width,
-						height: stat.image_size.height
+						width: statusImage.width,
+						height: statusImage.height
           });
+					
 					row.add(newStatusImage);
 					row.remove(statusImage);
 					statusImage = newStatusImage;
@@ -91,7 +92,7 @@ var _buildHealthItemList = function(carListViewInner) {
 			
 			var setAttention = function() {
 				row.attention = hi.stat.attention;
-				alertImage.image =  hi.stat.attention ? '/images/health_list_alert.png' : '';
+				alertImage.visible = hi.stat.attention;
 			}
 			
 			var animateNumbers = function() {
@@ -105,8 +106,8 @@ var _buildHealthItemList = function(carListViewInner) {
 
       row.add(titleLabel);
       row.add(statusLabel);
+			row.add(alertImage);
       row.add(statusImage);
-      row.add(alertImage);
       row.addEventListener('click', showItem);
       row.refresh = function() {
 				var images = hi.stat.reportImages();
