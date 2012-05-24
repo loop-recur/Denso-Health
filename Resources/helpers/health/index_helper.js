@@ -22,8 +22,7 @@ var _buildHealthItemList = function(carListViewInner) {
           row = Ti.UI.createTableViewRow({
             color: 'white',
             healthItem: hi,
-						width: Ti.UI.FILL,
-						className: stat.className,
+						width: "95%",
             attention: hi.stat.attention,
             input_name: i.input_name
           }),
