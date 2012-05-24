@@ -25,7 +25,8 @@ Theme = function(name) {
 			win: {
 				backgroundImage: "/images/main_bg.png"
 			}
-		}
+		},
+
 	}
 	
 	return themes[name];
