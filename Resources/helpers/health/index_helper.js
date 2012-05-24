@@ -22,7 +22,8 @@ var _buildHealthItemList = function(carListViewInner) {
           row = Ti.UI.createTableViewRow({
             color: 'white',
             healthItem: hi,
-						width: "95%",
+						width: Ti.UI.FILL,
+						className: stat.className,
             attention: hi.stat.attention,
             input_name: i.input_name
           }),
@@ -43,7 +44,9 @@ var _buildHealthItemList = function(carListViewInner) {
 						repeatCount: 1,
 						duration: 20,
 						image: '/images/health_meter/health_meter0.png',
-            right: 5
+            right: 5,
+						width: stat.image_size.width,
+						height: stat.image_size.height
           }), 
           
           alertImage = UI.createImageView({
@@ -58,8 +61,8 @@ var _buildHealthItemList = function(carListViewInner) {
 					var newStatusImage = UI.createImageView({
 						image: last(images),
             right: 5,
-            height: 10,
-            width: 20
+						width: stat.image_size.width,
+						height: stat.image_size.height
           });
 					row.add(newStatusImage);
 					row.remove(statusImage);

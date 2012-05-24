@@ -4,6 +4,8 @@ var getMeterImage = function(n) { return '/images/health_meter/health_meter'+n+'
 Stat = function() { this.level = 0; };
 Stat.prototype = {
 	attention: false,
+	className: "meter",
+	image_size: {width: 21, height: 9},
   
   reportLevel: function() { return this.level; },
 
@@ -119,6 +121,8 @@ FluidStat = function() {
 };
 
 MechStat = function() {
+	this.className = "dot";
+	this.image_size = {width: 14, height: 14};
   this.thresholds = { 40: 'check', 75: 'ok', 100: 'good' };
 
   this.messages = { check: 'Check', ok: 'OK', good: 'Good' };
