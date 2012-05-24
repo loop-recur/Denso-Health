@@ -1,7 +1,7 @@
 UI = {};
 
 UI.createButton = function(props) {
-	if(props) props = safe_merge(props, {backgroundImage: replaceImagePath(props.backgroundImage)});
+	if(props) props = safe_merge(props, {backgroundImage: replaceImagePath(props.backgroundImage), backgroundSelectedImage: replaceImagePath(props.backgroundSelectedImage)});
 	return Ti.UI.createButton(safe_merge(CurrentTheme.button, props));
 }
 

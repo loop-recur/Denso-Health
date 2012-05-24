@@ -3,7 +3,6 @@ Theme = function(name) {
 	var themes = {
 		blue_steel: {
 			button: {
-				backgroundColor: "black",
 				color: "white"
 			},
 			label: {
@@ -16,7 +15,6 @@ Theme = function(name) {
 
 		cadillac: {
 			button: {
-				backgroundColor: "brown",
 				color: "white"
 			},
 			label: {

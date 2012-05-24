@@ -166,7 +166,7 @@ Views.health.show = function(healthItem) {
         left: 16
       }),
 
-      backButton = UI.createView({
+      backButton = UI.createButton({
         backgroundImage: '/images/back_to_overview_btn.png',
         backgroundSelectedImage: '/images/back_to_overview_btn_p.png',
         width: 135,
