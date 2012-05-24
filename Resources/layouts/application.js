@@ -175,27 +175,31 @@ Layouts.application = (function() {
         sliderView = Ti.UI.createView({
           width: 345,
           height: 25,
-          left: 654
+          left: 654,
+          zIndex: 19
         }),
 
         volumeSlider = Ti.UI.createSlider({
           width: 275,
           height: 20,
-          left: 35
+          left: 35,
+          zIndex: 20
         }),
 
         smallVolume = UI.createImageView({
           image: '/images/media_bar_low_vol.png',
           height: 25,
           width: 25,
-          left: 1
+          left: 15,
+          zIndex: 20
         }),
 
         largeVolume = UI.createImageView({
           image: '/images/media_bar_hi_vol.png',
           height: 25,
           width: 25,
-          left: 321
+          left: 308,
+          zIndex: 20
         });
 
     mediaPlayer.add(smallVolume);
@@ -221,7 +225,7 @@ Layouts.application = (function() {
     var sideBar = UI.createView({
           width: 256,
           left: 0,
-          backgroundImage: '/images/health_sidebar_repeat.png'
+          backgroundImage: '/images/sidebar_overlay.png'
         }),
 
         underTheHood = UI.createImageView({
@@ -243,8 +247,9 @@ Layouts.application = (function() {
 
         sideBarInner = Ti.UI.createTableView({
           top: 175,
-          width: '100%',
-          separatorColor: 'gray'
+          left: 0,
+          separatorColor: 'gray',
+          width: 238
         }),
 
         sidePanelData = [
