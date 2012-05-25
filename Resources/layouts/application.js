@@ -73,12 +73,6 @@ Layouts.application = (function() {
           width: 35,
           height: 35,
           left: 5
-        }),
-
-        logo = UI.createImageView({
-          image: '/images/top_bar_logo.png',
-          width: 150,
-          left: 844
         });
 		
     topBar.add(emergencyButton);
@@ -86,7 +80,13 @@ Layouts.application = (function() {
     topBar.add(carIcon);
     topBar.add(time);
     topBar.add(date);
-    if(ThemeName == "cadillac") topBar.add(logo);
+    if(ThemeName == "cadillac") {
+			topBar.add(UI.createImageView({
+        image: '/images/top_bar_logo.png',
+        width: 150,
+        left: 844
+      }));
+		}
     win.add(topBar);
   };
 
