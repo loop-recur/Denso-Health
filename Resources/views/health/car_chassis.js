@@ -1,5 +1,3 @@
-Ti.include('helpers/health/car_chassis_helper.js');
-
 Views.health.carChassis = (function() {
   var self = {
         carView: UI.createView({

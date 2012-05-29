@@ -1,5 +1,3 @@
-Ti.include('helpers/health/show_helper.js');
-
 Views.health.show = function(healthItem) {
 
     var itemFocus = UI.createView({
@@ -86,7 +84,7 @@ Views.health.show = function(healthItem) {
         left: 10
       }),
 
-      itemVideo = Ti.UI.createImageView({
+      itemVideo = UI.createImageView({
         image: '/images/video_thumbnail.png',
         width: 171,
         height: 95,

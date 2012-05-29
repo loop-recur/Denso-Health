@@ -67,7 +67,7 @@ Layouts.application = (function() {
           left: 760
         }),
 
-        emergencyButton = Ti.UI.createButton({
+        emergencyButton = UI.createButton({
           backgroundImage: '/images/top_bar_emergency_btn.png',
           backgroundSelectedImage: '/images/top_bar_emergency_btn_a.png',
           width: 35,
@@ -127,7 +127,7 @@ Layouts.application = (function() {
           font: {fontSize: 14}
         }),
 
-        mediaBack = Ti.UI.createButton({
+        mediaBack = UI.createButton({
           backgroundImage: '/images/media_bar_back.png',
           backgroundSelectedImage: '/images/media_bar_back_p.png',
           left: 385.5,
@@ -136,7 +136,7 @@ Layouts.application = (function() {
           top: 10
         }),
 
-        mediaForward = Ti.UI.createButton({
+        mediaForward = UI.createButton({
           backgroundImage: '/images/media_bar_fwd.png',
           backgroundSelectedImage: '/images/media_bar_fwd_p.png',
           left: 570.5,
@@ -146,7 +146,7 @@ Layouts.application = (function() {
           top: 10
         }),
 
-        mediaPlay = Ti.UI.createButton({
+        mediaPlay = UI.createButton({
           backgroundImage: '/images/media_bar_play.png',
           backgroundSelectedImage: '/images/media_bar_play_p.png',
           left: 468.5,
@@ -155,7 +155,7 @@ Layouts.application = (function() {
           top: 5
         }),
 
-        mediaRepeat = Ti.UI.createButton({
+        mediaRepeat = UI.createButton({
           backgroundImage: '/images/media_bar_repeat.png',
           backgroundSelectedImage: '/images/media_bar_repeat_p.png',
           left: 255,
@@ -163,7 +163,7 @@ Layouts.application = (function() {
           height: 40
         }),
 
-        mediaShuffle = Ti.UI.createButton({
+        mediaShuffle = UI.createButton({
           backgroundImage: '/images/media_bar_shuffle.png',
           backgroundSelectedImage: '/images/media_bar_shuffle_p.png',
           left: 305,
@@ -262,7 +262,7 @@ Layouts.application = (function() {
 
     for (var i=0, len=sidePanelData.length; i < len; i++) {
       var data = sidePanelData[i],
-          row = Ti.UI.createTableViewRow({
+          row = UI.createTableViewRow({
             width: '100%',
             height: 80,
             backgroundImage: ((sidePanelData[i].title == "Health") ? '/images/health_background.png' : ''),
@@ -311,7 +311,7 @@ Layouts.application = (function() {
   };
 
   var _buildCarSummary = function() {
-    var healthAutoBox = Ti.UI.createView({
+    var healthAutoBox = UI.createView({
           backgroundImage: '/images/health_auto_box.png',
           top: 64,
           left: 286,

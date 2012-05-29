@@ -1,5 +1,5 @@
 var halfAndRound = function(n) { return Math.round(n/2); };
-var getMeterImage = function(n) { return '/images/health_meter/health_meter'+n+'.png'; };
+var getMeterImage = function(n) { return 'images/health_meter/health_meter'+n+'.png'; };
 
 Stat = function() { this.level = 0; };
 Stat.prototype = {
@@ -102,7 +102,7 @@ FluidStat = function() {
           };
 
   this.reportStaticImage = function() {
-    return (this.level >= 0 && this.level <= 100) ? ('/images/health_meter/health_meter'+Math.round(this.level/2)+'.png') : ''
+    return (this.level >= 0 && this.level <= 100) ? ('images/health_meter/health_meter'+Math.round(this.level/2)+'.png') : ''
   };
 
 	this.levelIsHigh = function() { return (this.level > 68 && this.level <= 100); };
@@ -153,22 +153,22 @@ MechStat = function() {
 
   this.reportStaticImage = function() {
     if(this.messages[this._reportThreshold()] === "Check") {
-      return '/images/health_list_red.png';
+      return 'images/health_list_red.png';
     } else if(this.messages[this._reportThreshold()] === "OK") {
-      return '/images/health_list_yellow.png';
+      return 'images/health_list_yellow.png';
     } else {
-      return '/images/health_list_green.png';
+      return 'images/health_list_green.png';
     }
 
   };
 
   this.reportImages = function() {
     if(this.messages[this._reportThreshold()] === "Check") {
-      return ['/images/health_list_red.png', '/images/health_list_red.png'];
+      return ['images/health_list_red.png', 'images/health_list_red.png'];
     } else if(this.messages[this._reportThreshold()] === "OK") {
-      return ['/images/health_list_yellow.png', '/images/health_list_yellow.png'];
+      return ['images/health_list_yellow.png', 'images/health_list_yellow.png'];
     } else {
-      return ['/images/health_list_green.png', '/images/health_list_green.png'];
+      return ['images/health_list_green.png', 'images/health_list_green.png'];
     }
   };
 };
@@ -196,7 +196,7 @@ AirStat = function() {
   };
 
   this.reportStaticImage = function() {
-    return (this.level >= 0 && this.level <= 50) ? ('/images/health_meter/health_meter'+this.level+'.png') : ''
+    return (this.level >= 0 && this.level <= 50) ? ('images/health_meter/health_meter'+this.level+'.png') : ''
   };
 
 	this.getImageFun = getMeterImage;

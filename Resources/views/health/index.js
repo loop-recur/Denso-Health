@@ -1,12 +1,10 @@
-Ti.include('helpers/health/index_helper.js');
-
 Views.health.index = function() {
   var carListView = UI.createView({
         width: 337,
         height: 517,  
         left: 13,
         top: 147,
-        backgroundImage: '/images/health_main_content_box.png'
+        backgroundImage: 'images/health_main_content_box.png'
       }),
 
       carListViewInner = Ti.UI.createTableView({
@@ -24,7 +22,7 @@ Views.health.index = function() {
 			if(isAndroid) {
 				socketView.html = SocketPage(SocketIp);
 			} else {
-				socketView.url = "/pages/socket_page.html";
+				socketView.url = "pages/socket_page.html";
 			}
 
   carListViewInner.setData(carListData);
