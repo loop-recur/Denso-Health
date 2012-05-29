@@ -31,5 +31,5 @@ UI.createTableViewRow = function(props) {
 
 function replaceImagePath(img) {
 	if(!img) return;
-	return replace(/images\/(.*)/, ThemeName+'/images/$1', img);
+	return replace(/images\/(.*)/, 'themes/'+ThemeName+'/images/$1', img);
 }
