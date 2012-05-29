@@ -5,4 +5,4 @@ theme = os.environ['THEME']
 themeString = "ThemeName = \"" + theme + "\";"
 f.write(themeString)
 print themeString
-f.close()
+f.close()	

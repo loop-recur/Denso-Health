@@ -265,7 +265,7 @@ Layouts.application = (function() {
           row = UI.createTableViewRow({
             width: '100%',
             height: 80,
-            backgroundImage: ((sidePanelData[i].title == "Health") ? '/images/health_background.png' : ''),
+            backgroundImage: ((sidePanelData[i].title == "Health") ? 'images/health_background.png' : ''),
           }),
 
           icon = UI.createView({
