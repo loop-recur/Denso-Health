@@ -1,7 +1,7 @@
 Theme = function(name) {
 	
 	var themes = {
-		blue_steel: {
+		mdx: {
 			button: {
 				color: "white"
 			},
