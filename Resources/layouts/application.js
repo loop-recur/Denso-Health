@@ -86,7 +86,7 @@ Layouts.application = (function() {
     topBar.add(carIcon);
     topBar.add(time);
     topBar.add(date);
-    if(ThemeName == "cadillac") topBar.add(logo);
+    topBar.add(logo);
     win.add(topBar);
   };
 

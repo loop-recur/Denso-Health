@@ -1,1 +1,1 @@
-ThemeName = "blue_steel";
+ThemeName = "mdx";
