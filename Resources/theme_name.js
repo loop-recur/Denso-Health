@@ -1,1 +1,1 @@
-ThemeName = "mdx";
+ThemeName = "cadillac";

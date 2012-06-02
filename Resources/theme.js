@@ -1,7 +1,7 @@
 Theme = function(name) {
 	
 	var themes = {
-		mdx: {
+		acura: {
 			button: {
 				color: "white"
 			},
