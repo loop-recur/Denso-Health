@@ -48,8 +48,8 @@ var _buildHealthItemList = function(carListViewInner) {
 						height: stat.image_size.height
           }), 
           
-          alertImage = UI.createImageView({
-            image: '/images/health_list_alert.png',
+          alertImage = UI.createView({
+            backgroundImage: '/images/health_list_alert.png',
             left: 0,
             height: 19,
             width: 22

@@ -21,16 +21,16 @@ Views.health.show = function(healthItem) {
         font: {fontSize: 18}
       }),
 
-      itemImage = UI.createImageView({
-        image: healthItem.image,
+      itemImage = UI.createView({
+        backgroundImage: healthItem.image,
         height: 30,
         width: 36,
         left: 5,
         top: 5
       }),
 
-      itemSeparator = UI.createImageView({
-        image: '/images/health_wiper_focus_separator.png',
+      itemSeparator = UI.createView({
+        backgroundImage: '/images/health_wiper_focus_separator.png',
         height: 10,
         width: 324,
         top: 40,
@@ -76,16 +76,16 @@ Views.health.show = function(healthItem) {
         top: 125
       }),
 
-      itemVideoSeparator = UI.createImageView({
-        image: '/images/health_wiper_focus_separator.png',
+      itemVideoSeparator = UI.createView({
+        backgroundImage: '/images/health_wiper_focus_separator.png',
         height: 10,
         width: 324,
         top: 1,
         left: 10
       }),
 
-      itemVideo = UI.createImageView({
-        image: '/images/video_thumbnail.png',
+      itemVideo = UI.createView({
+        backgroundImage: '/images/video_thumbnail.png',
         width: 171,
         height: 95,
         top: 25,
@@ -128,8 +128,8 @@ Views.health.show = function(healthItem) {
         top: 30
       }),
 
-      findNearest = UI.createImageView({
-        image: '/images/wiperfocus_find_nearest_btn.png',
+      findNearest = UI.createView({
+        backgroundImage: '/images/wiperfocus_find_nearest_btn.png',
         width: 310,
         height: 46
       }),
@@ -150,8 +150,8 @@ Views.health.show = function(healthItem) {
         top: 116
       }),
 
-      findDeal = UI.createImageView({
-        image: '/images/wiperfocus_deal_btn.png',
+      findDeal = UI.createView({
+        backgroundImage: '/images/wiperfocus_deal_btn.png',
         width: 310,
         height: 75
       }),
@@ -164,7 +164,7 @@ Views.health.show = function(healthItem) {
         left: 16
       }),
 
-      backButton = UI.createButton({
+      backButton = UI.createView({
         backgroundImage: '/images/back_to_overview_btn.png',
         backgroundSelectedImage: '/images/back_to_overview_btn_p.png',
         width: 135,
@@ -189,8 +189,8 @@ Views.health.show = function(healthItem) {
           top: 460
         }),
         
-        guideContent = UI.createImageView({
-          image: '/images/guide_popup_content.png',
+        guideContent = UI.createView({
+          backgroundImage: '/images/guide_popup_content.png',
           width: 500,
           height: 436,
           top: 15

@@ -39,8 +39,8 @@ Layouts.application = (function() {
           zIndex: 15
         }),
 
-        carIcon = UI.createImageView({
-          image: '/images/topbar_car_icon.png',
+        carIcon = UI.createView({
+          backgroundImage: '/images/topbar_car_icon.png',
           height: 36,
           width: 36,
           left: 795
@@ -60,14 +60,14 @@ Layouts.application = (function() {
           left: 50
         }),
   
-        powerButton = UI.createImageView({
-          image: '/images/topbar_on_icon.png',
+        powerButton = UI.createView({
+          backgroundImage: '/images/topbar_on_icon.png',
           width: 36,
           height: 36,
           left: 760
         }),
 
-        emergencyButton = UI.createButton({
+        emergencyButton = UI.createView({
           backgroundImage: '/images/top_bar_emergency_btn.png',
           backgroundSelectedImage: '/images/top_bar_emergency_btn_a.png',
           width: 35,
@@ -75,9 +75,10 @@ Layouts.application = (function() {
           left: 5
         }),
 
-        logo = UI.createImageView({
-          image: '/images/top_bar_logo.png',
+        logo = UI.createView({
+          backgroundImage: '/images/top_bar_logo.png',
           width: 150,
+					height: 28,
           left: 844
         });
 		
@@ -99,8 +100,8 @@ Layouts.application = (function() {
           zIndex: 15
         }),
 
-        coverArt = UI.createImageView({
-          image: '/images/Media-Bar1-_31.png',
+        coverArt = UI.createView({
+          backgroundImage: '/images/Media-Bar1-_31.png',
           left: 30
         }),
 
@@ -127,7 +128,7 @@ Layouts.application = (function() {
           font: {fontSize: 14}
         }),
 
-        mediaBack = UI.createButton({
+        mediaBack = UI.createView({
           backgroundImage: '/images/media_bar_back.png',
           backgroundSelectedImage: '/images/media_bar_back_p.png',
           left: 385.5,
@@ -136,7 +137,7 @@ Layouts.application = (function() {
           top: 10
         }),
 
-        mediaForward = UI.createButton({
+        mediaForward = UI.createView({
           backgroundImage: '/images/media_bar_fwd.png',
           backgroundSelectedImage: '/images/media_bar_fwd_p.png',
           left: 570.5,
@@ -146,7 +147,7 @@ Layouts.application = (function() {
           top: 10
         }),
 
-        mediaPlay = UI.createButton({
+        mediaPlay = UI.createView({
           backgroundImage: '/images/media_bar_play.png',
           backgroundSelectedImage: '/images/media_bar_play_p.png',
           left: 468.5,
@@ -155,7 +156,7 @@ Layouts.application = (function() {
           top: 5
         }),
 
-        mediaRepeat = UI.createButton({
+        mediaRepeat = UI.createView({
           backgroundImage: '/images/media_bar_repeat.png',
           backgroundSelectedImage: '/images/media_bar_repeat_p.png',
           left: 255,
@@ -163,7 +164,7 @@ Layouts.application = (function() {
           height: 40
         }),
 
-        mediaShuffle = UI.createButton({
+        mediaShuffle = UI.createView({
           backgroundImage: '/images/media_bar_shuffle.png',
           backgroundSelectedImage: '/images/media_bar_shuffle_p.png',
           left: 305,
@@ -186,16 +187,16 @@ Layouts.application = (function() {
           zIndex: 20
         }),
 
-        smallVolume = UI.createImageView({
-          image: '/images/media_bar_low_vol.png',
+        smallVolume = UI.createView({
+          backgroundImage: '/images/media_bar_low_vol.png',
           height: 25,
           width: 25,
           left: 15,
           zIndex: 20
         }),
 
-        largeVolume = UI.createImageView({
-          image: '/images/media_bar_hi_vol.png',
+        largeVolume = UI.createView({
+          backgroundImage: '/images/media_bar_hi_vol.png',
           height: 25,
           width: 25,
           left: 308,
@@ -228,16 +229,17 @@ Layouts.application = (function() {
           backgroundImage: '/images/sidebar_overlay.png'
         }),
 
-        underTheHood = UI.createImageView({
-          image: '/images/sidebar_under_the_hood_heading.png',
+        underTheHood = UI.createView({
+          backgroundImage: '/images/sidebar_under_the_hood_heading.png',
           left: 38,
           top: 125,
           width: 188,
+					height: 23,
           zIndex: 15
         }),
 
-        sideBarBack = UI.createImageView({
-          image: '/images/sidebar_backhome.png',
+        sideBarBack = UI.createView({
+          backgroundImage: '/images/sidebar_backhome.png',
           top: 95,
           left: 10,
           height: 19,
@@ -319,8 +321,8 @@ Layouts.application = (function() {
           height: 59
         });
 
-    var carPreview = UI.createImageView({
-          image: '/images/cadillac_xts_avatar.png',
+    var carPreview = UI.createView({
+          backgroundImage: '/images/cadillac_xts_avatar.png',
           width: 40,
           height: 40,
           top: 7,

@@ -23,7 +23,7 @@ Views.health.carChassis = (function() {
       };
 
     self.buildChassisItem = function() {
-      return UI.createImageView({
+      return UI.createView({
         width: 320,
         height: 520
       });

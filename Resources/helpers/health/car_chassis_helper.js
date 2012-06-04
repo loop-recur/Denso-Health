@@ -14,12 +14,12 @@ carChassisHelper = function(view) {
 
   view.update = function(healthItem) {
 		var level = healthItem.stat.reportChassisLevel();
-    if(view[healthItem.input_name] && level) view[healthItem.input_name].image = _chassisImage(healthItem.input_name, level);
+    if(view[healthItem.input_name] && level) view[healthItem.input_name].backgroundImage = _chassisImage(healthItem.input_name, level);
   };  
 
   view.clear = function() {
     for(var i = 0, len = chassisItems.length; i < len; i++) {
-      if(view[chassisItems[i]]) view[chassisItems[i]].image = null;
+      if(view[chassisItems[i]]) view[chassisItems[i]].backgroundImage = null;
     }
   };
 
