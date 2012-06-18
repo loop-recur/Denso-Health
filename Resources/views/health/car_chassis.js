@@ -1,4 +1,8 @@
-Ti.include('/helpers/health/car_chassis_helper.js');
+if (isAndroid) {
+  Ti.include('/helpers/health/car_chassis_helper.js');
+} else {
+  Ti.include('../../helpers/health/car_chassis_helper.js');
+}
 
 Views.health.carChassis = (function() {
   var self = {

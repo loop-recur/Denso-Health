@@ -1,4 +1,8 @@
-Ti.include('/helpers/health/index_helper.js');
+if (isAndroid) {
+  Ti.include('/helpers/health/index_helper.js');
+} else {
+  Ti.include('../../helpers/health/index_helper.js');
+}
 
 Views.health.index = function() {
   var carListView = UI.createView({
@@ -24,7 +28,7 @@ Views.health.index = function() {
 			if(isAndroid) {
 				socketView.html = SocketPage(SocketIp);
 			} else {
-				socketView.url = "/pages/socket_page.html";
+				socketView.url = "pages/socket_page.html";
 			}
 
   carListViewInner.setData(carListData);

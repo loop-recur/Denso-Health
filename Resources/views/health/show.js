@@ -1,4 +1,8 @@
-Ti.include('/helpers/health/show_helper.js');
+if (isAndroid) {
+  Ti.include('/helpers/health/show_helper.js');
+} else {
+  Ti.include('../../helpers/health/show_helper.js');
+}
 
 Views.health.show = function(healthItem) {
 
@@ -86,7 +90,7 @@ Views.health.show = function(healthItem) {
         left: 10
       }),
 
-      itemVideo = Ti.UI.createImageView({
+      itemVideo = UI.createImageView({
         image: '/images/video_thumbnail.png',
         width: 171,
         height: 95,

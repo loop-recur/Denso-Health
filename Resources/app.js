@@ -1,6 +1,6 @@
 var SocketIp;
-Ti.include('/theme_name.js');
-Ti.include('/initializers/init.js');
+Ti.include('theme_name.js');
+Ti.include('initializers/init.js');
 CurrentTheme = Theme(ThemeName);
 
 var win = UI.createWindow({
