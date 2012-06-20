@@ -7,7 +7,8 @@ var win = UI.createWindow({
 	height:768,
 	width:1024,
 	top:0,
-	left:0
+	left:0,
+	exitOnClose: true
 });
 
 PromptConnect(function(ip){
