@@ -320,7 +320,7 @@ Layouts.application = (function() {
         });
 
     var carPreview = UI.createImageView({
-          image: '/images/cadillac_xts_avatar.png',
+          image: '/images/avatar.png',
           width: 40,
           height: 40,
           top: 7,
@@ -328,7 +328,7 @@ Layouts.application = (function() {
         });
 
     var carMakeModel = Ti.UI.createLabel({
-          text: '2011 Cadillac XTS',
+          text: ((ThemeName == 'acura') ? '2012 Acura MDX' : '2011 Cadillac XTS'),
           color: 'white',
           bottom: 5,
           right: 5,
